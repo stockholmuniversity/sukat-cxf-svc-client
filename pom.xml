@@ -1,10 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>se.su.it.cxf</groupId>
-  <artifactId>cxf-svc-client-skeleton</artifactId>
+  <artifactId>sukat-cxf-svc-client</artifactId>
   <packaging>jar</packaging>
   <version>0.6-SNAPSHOT</version>
-  <name>cxf-svc-client-skeleton</name>
+  <name>sukat-cxf-svc-client</name>
   <url>http://devel.it.su.se</url>
   <description>WebService Client for SU cxf services.</description>
   <developers>
@@ -17,8 +17,8 @@
     </developer>
   </developers>
   <scm>
-    <connection>scm:git:ssh://git.it.su.se/git/cxf-svc-client-skeleton</connection>
-    <developerConnection>scm:git:ssh://git.it.su.se/git/cxf-svc-client-skeleton</developerConnection>
+    <connection>scm:git:ssh://git.it.su.se/git/sukat-cxf-svc-client</connection>
+    <developerConnection>scm:git:ssh://git.it.su.se/git/sukat-cxf-svc-client</developerConnection>
   </scm>
   <organization>
     <name>Stockholm university</name>
