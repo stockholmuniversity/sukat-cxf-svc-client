@@ -1,14 +1,22 @@
-<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="CardInfoServiceService" targetNamespace="http://svc.it.su.se/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://svc.it.su.se/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="CardInfoServiceImplService" targetNamespace="http://svc.it.su.se/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://svc.it.su.se/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <wsdl:types>
 <xs:schema elementFormDefault="unqualified" targetNamespace="http://svc.it.su.se/" version="1.0" xmlns:tns="http://svc.it.su.se/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 <xs:element name="getAllCards" type="tns:getAllCards"/>
 <xs:element name="getAllCardsResponse" type="tns:getAllCardsResponse"/>
 <xs:element name="suCard" type="tns:suCard"/>
+<xs:element name="svcAudit" type="tns:svcAudit"/>
 <xs:complexType name="getAllCards">
     <xs:sequence>
       <xs:element minOccurs="0" name="uid" type="xs:string"/>
       <xs:element name="onlyActive" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
     </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="svcAudit">
+    <xs:sequence/>
+    <xs:attribute name="uid" type="xs:string"/>
+    <xs:attribute name="ipAddress" type="xs:string"/>
+    <xs:attribute name="client" type="xs:string"/>
   </xs:complexType>
 <xs:complexType name="getAllCardsResponse">
     <xs:sequence>
@@ -33,7 +41,7 @@
     <wsdl:part element="tns:getAllCards" name="parameters">
     </wsdl:part>
   </wsdl:message>
-  <wsdl:portType name="CardInfoService">
+  <wsdl:portType name="CardInfoServiceImpl">
     <wsdl:operation name="getAllCards">
       <wsdl:input message="tns:getAllCards" name="getAllCards">
     </wsdl:input>
@@ -41,7 +49,7 @@
     </wsdl:output>
     </wsdl:operation>
   </wsdl:portType>
-  <wsdl:binding name="CardInfoServiceServiceSoapBinding" type="tns:CardInfoService">
+  <wsdl:binding name="CardInfoServiceImplServiceSoapBinding" type="tns:CardInfoServiceImpl">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
     <wsdl:operation name="getAllCards">
       <soap:operation soapAction="" style="document"/>
@@ -53,8 +61,8 @@
       </wsdl:output>
     </wsdl:operation>
   </wsdl:binding>
-  <wsdl:service name="CardInfoServiceService">
-    <wsdl:port binding="tns:CardInfoServiceServiceSoapBinding" name="CardInfoServicePort">
+  <wsdl:service name="CardInfoServiceImplService">
+    <wsdl:port binding="tns:CardInfoServiceImplServiceSoapBinding" name="CardInfoServiceImplPort">
       <soap:address location="https://jqvarlocal.it.su.se/CardInfoService"/>
     </wsdl:port>
   </wsdl:service>

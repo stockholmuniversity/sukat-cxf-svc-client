@@ -25,7 +25,7 @@
     <url>http://www.su.se</url>
   </organization>
   <properties>
-    <cxf.version>2.4.3</cxf.version>
+    <cxf.version>2.6.1</cxf.version>
   </properties>
   <dependencies>
     <dependency>
