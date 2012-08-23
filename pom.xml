@@ -3,7 +3,7 @@
   <groupId>se.su.it.cxf</groupId>
   <artifactId>sukat-cxf-svc-client</artifactId>
   <packaging>jar</packaging>
-  <version>0.6</version>
+  <version>0.7-SNAPSHOT</version>
   <name>sukat-cxf-svc-client</name>
   <url>http://devel.it.su.se</url>
   <description>WebService Client for SU cxf services.</description>
