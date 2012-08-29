@@ -11,7 +11,7 @@
 SERVER='jqvarlocal.it.su.se'
 
 #space seperated list of wsdl files"
-WSDLFILES="CardAdminService CardInfoService.wsdl Status.wsdl"
+WSDLFILES="CardAdminService.wsdl CardInfoService.wsdl Status.wsdl"
 
 for file in $WSDLFILES; do
   base=`basename $file .wsdl`
