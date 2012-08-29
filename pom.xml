@@ -82,6 +82,12 @@
               <sourceRoot>${project.build.directory}/generated/cxf</sourceRoot>
               <wsdlOptions>
                 <wsdlOption>
+                  <wsdl>${basedir}/src/main/wsdl/CardAdminService.wsdl</wsdl>
+                  <extraargs>
+                    <extraarg>-xjc-b,${basedir}/src/main/resources/fixserialize.xjb</extraarg>
+                  </extraargs>
+                </wsdlOption>
+                <wsdlOption>
                   <wsdl>${basedir}/src/main/wsdl/CardInfoService.wsdl</wsdl>
                   <extraargs>
                     <extraarg>-xjc-b,${basedir}/src/main/resources/fixserialize.xjb</extraarg>

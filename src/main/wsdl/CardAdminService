@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="CardAdminServiceImplService" targetNamespace="http://svc.it.su.se/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://svc.it.su.se/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+<xs:schema elementFormDefault="unqualified" targetNamespace="http://svc.it.su.se/" version="1.0" xmlns:tns="http://svc.it.su.se/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="revokeCard" type="tns:revokeCard"/>
+<xs:element name="revokeCardResponse" type="tns:revokeCardResponse"/>
+<xs:element name="svcAudit" type="tns:svcAudit"/>
+<xs:complexType name="revokeCard">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="suCardUUID" type="xs:string"/>
+      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="svcAudit">
+    <xs:sequence/>
+    <xs:attribute name="uid" type="xs:string"/>
+    <xs:attribute name="ipAddress" type="xs:string"/>
+    <xs:attribute name="client" type="xs:string"/>
+  </xs:complexType>
+<xs:complexType name="revokeCardResponse">
+    <xs:sequence>
+      <xs:element name="return" type="xs:boolean"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="revokeCard">
+    <wsdl:part element="tns:revokeCard" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="revokeCardResponse">
+    <wsdl:part element="tns:revokeCardResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CardAdminServiceImpl">
+    <wsdl:operation name="revokeCard">
+      <wsdl:input message="tns:revokeCard" name="revokeCard">
+    </wsdl:input>
+      <wsdl:output message="tns:revokeCardResponse" name="revokeCardResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CardAdminServiceImplServiceSoapBinding" type="tns:CardAdminServiceImpl">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="revokeCard">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="revokeCard">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="revokeCardResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CardAdminServiceImplService">
+    <wsdl:port binding="tns:CardAdminServiceImplServiceSoapBinding" name="CardAdminServiceImplPort">
+      <soap:address location="https://jqvarlocal.it.su.se/CardAdminService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
