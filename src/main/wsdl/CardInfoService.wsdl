@@ -31,6 +31,7 @@
     <xs:attribute name="suCardTypeURN" type="xs:string"/>
     <xs:attribute name="suCardSerial" type="xs:string"/>
     <xs:attribute name="suCardState" type="xs:string"/>
+    <xs:attribute name="suCardPIN" type="xs:string"/>
   </xs:complexType>
 <xs:complexType name="getAllCards">
     <xs:sequence>
