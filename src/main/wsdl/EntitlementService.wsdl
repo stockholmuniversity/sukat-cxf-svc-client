@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="EntitlementServiceImplService" targetNamespace="http://svc.it.su.se/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://svc.it.su.se/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+<xs:schema elementFormDefault="unqualified" targetNamespace="http://svc.it.su.se/" version="1.0" xmlns:tns="http://svc.it.su.se/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="addEntitlement" type="tns:addEntitlement"/>
+<xs:element name="addEntitlementResponse" type="tns:addEntitlementResponse"/>
+<xs:element name="svcAudit" type="tns:svcAudit"/>
+<xs:complexType name="addEntitlement">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="uid" type="xs:string"/>
+      <xs:element minOccurs="0" name="entitlement" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg2" type="tns:svcAudit"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="svcAudit">
+    <xs:sequence/>
+    <xs:attribute name="uid" type="xs:string"/>
+    <xs:attribute name="ipAddress" type="xs:string"/>
+    <xs:attribute name="client" type="xs:string"/>
+  </xs:complexType>
+<xs:complexType name="addEntitlementResponse">
+    <xs:sequence/>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="addEntitlementResponse">
+    <wsdl:part element="tns:addEntitlementResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addEntitlement">
+    <wsdl:part element="tns:addEntitlement" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="EntitlementServiceImpl">
+    <wsdl:operation name="addEntitlement">
+      <wsdl:input message="tns:addEntitlement" name="addEntitlement">
+    </wsdl:input>
+      <wsdl:output message="tns:addEntitlementResponse" name="addEntitlementResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="EntitlementServiceImplServiceSoapBinding" type="tns:EntitlementServiceImpl">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="addEntitlement">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addEntitlement">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addEntitlementResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="EntitlementServiceImplService">
+    <wsdl:port binding="tns:EntitlementServiceImplServiceSoapBinding" name="EntitlementServiceImplPort">
+      <soap:address location="https://jqvarlocal.it.su.se/EntitlementService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
