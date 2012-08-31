@@ -8,7 +8,7 @@
     <xs:sequence>
       <xs:element minOccurs="0" name="uid" type="xs:string"/>
       <xs:element minOccurs="0" name="entitlement" type="xs:string"/>
-      <xs:element minOccurs="0" name="arg2" type="tns:svcAudit"/>
+      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
     </xs:sequence>
   </xs:complexType>
 <xs:complexType name="svcAudit">
