@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="ServiceServiceImplService" targetNamespace="http://svc.it.su.se/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://svc.it.su.se/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+<xs:schema elementFormDefault="unqualified" targetNamespace="http://svc.it.su.se/" version="1.0" xmlns:tns="http://svc.it.su.se/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="getServices" type="tns:getServices"/>
+<xs:element name="getServicesResponse" type="tns:getServicesResponse"/>
+<xs:element name="suService" type="tns:suService"/>
+<xs:element name="svcAudit" type="tns:svcAudit"/>
+<xs:complexType name="getServices">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="uid" type="xs:string"/>
+      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="svcAudit">
+    <xs:sequence/>
+    <xs:attribute name="uid" type="xs:string"/>
+    <xs:attribute name="ipAddress" type="xs:string"/>
+    <xs:attribute name="client" type="xs:string"/>
+  </xs:complexType>
+<xs:complexType name="getServicesResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:suService"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="suService">
+    <xs:sequence/>
+    <xs:attribute name="cn" type="xs:string"/>
+    <xs:attribute name="suServiceType" type="xs:string"/>
+    <xs:attribute name="suServiceStatus" type="xs:string"/>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getServices">
+    <wsdl:part element="tns:getServices" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getServicesResponse">
+    <wsdl:part element="tns:getServicesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="ServiceServiceImpl">
+    <wsdl:operation name="getServices">
+      <wsdl:input message="tns:getServices" name="getServices">
+    </wsdl:input>
+      <wsdl:output message="tns:getServicesResponse" name="getServicesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ServiceServiceImplServiceSoapBinding" type="tns:ServiceServiceImpl">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getServices">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getServices">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getServicesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="ServiceServiceImplService">
+    <wsdl:port binding="tns:ServiceServiceImplServiceSoapBinding" name="ServiceServiceImplPort">
+      <soap:address location="https://jqvarlocal.it.su.se/ServiceService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
