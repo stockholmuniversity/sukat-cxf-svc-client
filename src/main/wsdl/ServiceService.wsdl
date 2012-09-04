@@ -1,9 +1,12 @@
 <?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="ServiceServiceImplService" targetNamespace="http://svc.it.su.se/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://svc.it.su.se/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <wsdl:types>
 <xs:schema elementFormDefault="unqualified" targetNamespace="http://svc.it.su.se/" version="1.0" xmlns:tns="http://svc.it.su.se/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="getServiceTemplates" type="tns:getServiceTemplates"/>
+<xs:element name="getServiceTemplatesResponse" type="tns:getServiceTemplatesResponse"/>
 <xs:element name="getServices" type="tns:getServices"/>
 <xs:element name="getServicesResponse" type="tns:getServicesResponse"/>
 <xs:element name="suService" type="tns:suService"/>
+<xs:element name="suServiceDescription" type="tns:suServiceDescription"/>
 <xs:element name="svcAudit" type="tns:svcAudit"/>
 <xs:complexType name="getServices">
     <xs:sequence>
@@ -28,10 +31,37 @@
     <xs:attribute name="suServiceType" type="xs:string"/>
     <xs:attribute name="suServiceStatus" type="xs:string"/>
   </xs:complexType>
+<xs:complexType name="getServiceTemplates">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="getServiceTemplatesResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:suServiceDescription"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="suServiceDescription">
+    <xs:sequence/>
+    <xs:attribute name="cn" type="xs:string"/>
+    <xs:attribute name="suServiceType" type="xs:string"/>
+    <xs:attribute name="suServicePolicy" type="xs:string"/>
+    <xs:attribute name="suServiceURI" type="xs:string"/>
+    <xs:attribute name="description" type="xs:string"/>
+    <xs:attribute name="displayName" type="xs:string"/>
+  </xs:complexType>
 </xs:schema>
   </wsdl:types>
+  <wsdl:message name="getServiceTemplatesResponse">
+    <wsdl:part element="tns:getServiceTemplatesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="getServices">
     <wsdl:part element="tns:getServices" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getServiceTemplates">
+    <wsdl:part element="tns:getServiceTemplates" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="getServicesResponse">
@@ -45,9 +75,24 @@
       <wsdl:output message="tns:getServicesResponse" name="getServicesResponse">
     </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getServiceTemplates">
+      <wsdl:input message="tns:getServiceTemplates" name="getServiceTemplates">
+    </wsdl:input>
+      <wsdl:output message="tns:getServiceTemplatesResponse" name="getServiceTemplatesResponse">
+    </wsdl:output>
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="ServiceServiceImplServiceSoapBinding" type="tns:ServiceServiceImpl">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getServiceTemplates">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getServiceTemplates">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getServiceTemplatesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getServices">
       <soap:operation soapAction="" style="document"/>
       <wsdl:input name="getServices">
