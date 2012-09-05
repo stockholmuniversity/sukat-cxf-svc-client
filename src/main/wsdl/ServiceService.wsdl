@@ -1,6 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="ServiceServiceImplService" targetNamespace="http://svc.it.su.se/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://svc.it.su.se/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <wsdl:types>
 <xs:schema elementFormDefault="unqualified" targetNamespace="http://svc.it.su.se/" version="1.0" xmlns:tns="http://svc.it.su.se/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="enableServiceFully" type="tns:enableServiceFully"/>
+<xs:element name="enableServiceFullyResponse" type="tns:enableServiceFullyResponse"/>
 <xs:element name="getServiceTemplates" type="tns:getServiceTemplates"/>
 <xs:element name="getServiceTemplatesResponse" type="tns:getServiceTemplatesResponse"/>
 <xs:element name="getServices" type="tns:getServices"/>
@@ -50,8 +52,26 @@
     <xs:attribute name="description" type="xs:string"/>
     <xs:attribute name="displayName" type="xs:string"/>
   </xs:complexType>
+<xs:complexType name="enableServiceFully">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="uid" type="xs:string"/>
+      <xs:element minOccurs="0" name="serviceType" type="xs:string"/>
+      <xs:element minOccurs="0" name="qualifier" type="xs:string"/>
+      <xs:element minOccurs="0" name="description" type="xs:string"/>
+      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="enableServiceFullyResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:suService"/>
+    </xs:sequence>
+  </xs:complexType>
 </xs:schema>
   </wsdl:types>
+  <wsdl:message name="enableServiceFully">
+    <wsdl:part element="tns:enableServiceFully" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="getServiceTemplatesResponse">
     <wsdl:part element="tns:getServiceTemplatesResponse" name="parameters">
     </wsdl:part>
@@ -62,6 +82,10 @@
   </wsdl:message>
   <wsdl:message name="getServiceTemplates">
     <wsdl:part element="tns:getServiceTemplates" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="enableServiceFullyResponse">
+    <wsdl:part element="tns:enableServiceFullyResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="getServicesResponse">
@@ -79,6 +103,12 @@
       <wsdl:input message="tns:getServiceTemplates" name="getServiceTemplates">
     </wsdl:input>
       <wsdl:output message="tns:getServiceTemplatesResponse" name="getServiceTemplatesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="enableServiceFully">
+      <wsdl:input message="tns:enableServiceFully" name="enableServiceFully">
+    </wsdl:input>
+      <wsdl:output message="tns:enableServiceFullyResponse" name="enableServiceFullyResponse">
     </wsdl:output>
     </wsdl:operation>
   </wsdl:portType>
@@ -99,6 +129,15 @@
         <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="getServicesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="enableServiceFully">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="enableServiceFully">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="enableServiceFullyResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>

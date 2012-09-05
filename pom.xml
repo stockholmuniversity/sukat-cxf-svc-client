@@ -16,9 +16,6 @@
       <timezone>CET</timezone>
     </developer>
   </developers>
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
   <scm>
     <connection>scm:git:ssh://git.it.su.se/git/sukat-cxf-svc-client</connection>
     <developerConnection>scm:git:ssh://git.it.su.se/git/sukat-cxf-svc-client</developerConnection>
@@ -28,6 +25,7 @@
     <url>http://www.su.se</url>
   </organization>
   <properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <cxf.version>2.6.1</cxf.version>
   </properties>
   <dependencies>
