@@ -1,0 +1,12 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="AccountServiceImplService" targetNamespace="http://svc.it.su.se/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://svc.it.su.se/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:portType name="AccountServiceImpl">
+  </wsdl:portType>
+  <wsdl:binding name="AccountServiceImplServiceSoapBinding" type="tns:AccountServiceImpl">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+  </wsdl:binding>
+  <wsdl:service name="AccountServiceImplService">
+    <wsdl:port binding="tns:AccountServiceImplServiceSoapBinding" name="AccountServiceImplPort">
+      <soap:address location="https://jqvarlocal.it.su.se/AccountService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
