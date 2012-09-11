@@ -1,6 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="ServiceServiceImplService" targetNamespace="http://svc.it.su.se/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://svc.it.su.se/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <wsdl:types>
 <xs:schema elementFormDefault="unqualified" targetNamespace="http://svc.it.su.se/" version="1.0" xmlns:tns="http://svc.it.su.se/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="blockService" type="tns:blockService"/>
+<xs:element name="blockServiceResponse" type="tns:blockServiceResponse"/>
 <xs:element name="enableServiceFully" type="tns:enableServiceFully"/>
 <xs:element name="enableServiceFullyResponse" type="tns:enableServiceFullyResponse"/>
 <xs:element name="getServiceTemplates" type="tns:getServiceTemplates"/>
@@ -30,8 +32,16 @@
 <xs:complexType name="suService">
     <xs:sequence/>
     <xs:attribute name="cn" type="xs:string"/>
+    <xs:attribute name="myowner" type="xs:string"/>
     <xs:attribute name="suServiceType" type="xs:string"/>
     <xs:attribute name="suServiceStatus" type="xs:string"/>
+    <xs:attribute name="suServiceStartTime" type="xs:string"/>
+    <xs:attribute name="roleOccupant" type="xs:string"/>
+    <xs:attribute name="objectClass">
+      <xs:simpleType>
+        <xs:list itemType="xs:string"/>
+      </xs:simpleType>
+    </xs:attribute>
   </xs:complexType>
 <xs:complexType name="getServiceTemplates">
     <xs:sequence>
@@ -51,6 +61,16 @@
     <xs:attribute name="suServiceURI" type="xs:string"/>
     <xs:attribute name="description" type="xs:string"/>
     <xs:attribute name="displayName" type="xs:string"/>
+  </xs:complexType>
+<xs:complexType name="blockService">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="uid" type="xs:string"/>
+      <xs:element minOccurs="0" name="serviceType" type="xs:string"/>
+      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="blockServiceResponse">
+    <xs:sequence/>
   </xs:complexType>
 <xs:complexType name="enableServiceFully">
     <xs:sequence>
@@ -72,6 +92,10 @@
     <wsdl:part element="tns:enableServiceFully" name="parameters">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="blockService">
+    <wsdl:part element="tns:blockService" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="getServiceTemplatesResponse">
     <wsdl:part element="tns:getServiceTemplatesResponse" name="parameters">
     </wsdl:part>
@@ -86,6 +110,10 @@
   </wsdl:message>
   <wsdl:message name="enableServiceFullyResponse">
     <wsdl:part element="tns:enableServiceFullyResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="blockServiceResponse">
+    <wsdl:part element="tns:blockServiceResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="getServicesResponse">
@@ -103,6 +131,12 @@
       <wsdl:input message="tns:getServiceTemplates" name="getServiceTemplates">
     </wsdl:input>
       <wsdl:output message="tns:getServiceTemplatesResponse" name="getServiceTemplatesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="blockService">
+      <wsdl:input message="tns:blockService" name="blockService">
+    </wsdl:input>
+      <wsdl:output message="tns:blockServiceResponse" name="blockServiceResponse">
     </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="enableServiceFully">
@@ -129,6 +163,15 @@
         <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="getServicesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="blockService">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="blockService">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="blockServiceResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
