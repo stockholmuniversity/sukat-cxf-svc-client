@@ -12,6 +12,8 @@
 <xs:element name="suService" type="tns:suService"/>
 <xs:element name="suServiceDescription" type="tns:suServiceDescription"/>
 <xs:element name="svcAudit" type="tns:svcAudit"/>
+<xs:element name="unblockService" type="tns:unblockService"/>
+<xs:element name="unblockServiceResponse" type="tns:unblockServiceResponse"/>
 <xs:complexType name="getServices">
     <xs:sequence>
       <xs:element minOccurs="0" name="uid" type="xs:string"/>
@@ -72,6 +74,16 @@
 <xs:complexType name="blockServiceResponse">
     <xs:sequence/>
   </xs:complexType>
+<xs:complexType name="unblockService">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="uid" type="xs:string"/>
+      <xs:element minOccurs="0" name="serviceType" type="xs:string"/>
+      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="unblockServiceResponse">
+    <xs:sequence/>
+  </xs:complexType>
 <xs:complexType name="enableServiceFully">
     <xs:sequence>
       <xs:element minOccurs="0" name="uid" type="xs:string"/>
@@ -92,6 +104,10 @@
     <wsdl:part element="tns:enableServiceFully" name="parameters">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="unblockService">
+    <wsdl:part element="tns:unblockService" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="blockService">
     <wsdl:part element="tns:blockService" name="parameters">
     </wsdl:part>
@@ -106,6 +122,10 @@
   </wsdl:message>
   <wsdl:message name="getServiceTemplates">
     <wsdl:part element="tns:getServiceTemplates" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="unblockServiceResponse">
+    <wsdl:part element="tns:unblockServiceResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="enableServiceFullyResponse">
@@ -137,6 +157,12 @@
       <wsdl:input message="tns:blockService" name="blockService">
     </wsdl:input>
       <wsdl:output message="tns:blockServiceResponse" name="blockServiceResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="unblockService">
+      <wsdl:input message="tns:unblockService" name="unblockService">
+    </wsdl:input>
+      <wsdl:output message="tns:unblockServiceResponse" name="unblockServiceResponse">
     </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="enableServiceFully">
@@ -181,6 +207,15 @@
         <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="enableServiceFullyResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="unblockService">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="unblockService">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="unblockServiceResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
