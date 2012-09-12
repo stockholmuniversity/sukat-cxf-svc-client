@@ -4,9 +4,9 @@
 <xs:element name="resetPassword" type="tns:resetPassword"/>
 <xs:element name="resetPasswordResponse" type="tns:resetPasswordResponse"/>
 <xs:element name="svcAudit" type="tns:svcAudit"/>
-<xs:element name="updateAffiliation" type="tns:updateAffiliation"/>
-<xs:element name="updateAffiliationResponse" type="tns:updateAffiliationResponse"/>
-<xs:complexType name="updateAffiliation">
+<xs:element name="updatePrimaryAffiliation" type="tns:updatePrimaryAffiliation"/>
+<xs:element name="updatePrimaryAffiliationResponse" type="tns:updatePrimaryAffiliationResponse"/>
+<xs:complexType name="updatePrimaryAffiliation">
     <xs:sequence>
       <xs:element minOccurs="0" name="uid" type="xs:string"/>
       <xs:element minOccurs="0" name="affiliation" type="xs:string"/>
@@ -19,7 +19,7 @@
     <xs:attribute name="ipAddress" type="xs:string"/>
     <xs:attribute name="client" type="xs:string"/>
   </xs:complexType>
-<xs:complexType name="updateAffiliationResponse">
+<xs:complexType name="updatePrimaryAffiliationResponse">
     <xs:sequence/>
   </xs:complexType>
 <xs:complexType name="resetPassword">
@@ -39,23 +39,23 @@
     <wsdl:part element="tns:resetPasswordResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="updatePrimaryAffiliationResponse">
+    <wsdl:part element="tns:updatePrimaryAffiliationResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="resetPassword">
     <wsdl:part element="tns:resetPassword" name="parameters">
     </wsdl:part>
   </wsdl:message>
-  <wsdl:message name="updateAffiliation">
-    <wsdl:part element="tns:updateAffiliation" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="updateAffiliationResponse">
-    <wsdl:part element="tns:updateAffiliationResponse" name="parameters">
+  <wsdl:message name="updatePrimaryAffiliation">
+    <wsdl:part element="tns:updatePrimaryAffiliation" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:portType name="AccountServiceImpl">
-    <wsdl:operation name="updateAffiliation">
-      <wsdl:input message="tns:updateAffiliation" name="updateAffiliation">
+    <wsdl:operation name="updatePrimaryAffiliation">
+      <wsdl:input message="tns:updatePrimaryAffiliation" name="updatePrimaryAffiliation">
     </wsdl:input>
-      <wsdl:output message="tns:updateAffiliationResponse" name="updateAffiliationResponse">
+      <wsdl:output message="tns:updatePrimaryAffiliationResponse" name="updatePrimaryAffiliationResponse">
     </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="resetPassword">
@@ -67,21 +67,21 @@
   </wsdl:portType>
   <wsdl:binding name="AccountServiceImplServiceSoapBinding" type="tns:AccountServiceImpl">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="updatePrimaryAffiliation">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="updatePrimaryAffiliation">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updatePrimaryAffiliationResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="resetPassword">
       <soap:operation soapAction="" style="document"/>
       <wsdl:input name="resetPassword">
         <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="resetPasswordResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="updateAffiliation">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="updateAffiliation">
-        <soap:body use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="updateAffiliationResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
