@@ -113,6 +113,12 @@
                   </extraargs>
                 </wsdlOption>
                 <wsdlOption>
+                  <wsdl>${basedir}/src/main/wsdl/EnrollmentService.wsdl</wsdl>
+                  <extraargs>
+                    <extraarg>-xjc-b,${basedir}/src/main/resources/fixserialize.xjb</extraarg>
+                  </extraargs>
+                </wsdlOption>
+                <wsdlOption>
                   <wsdl>${basedir}/src/main/wsdl/Status.wsdl</wsdl>
                   <extraargs>
                     <extraarg>-xjc-b,${basedir}/src/main/resources/fixserialize.xjb</extraarg>
