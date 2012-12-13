@@ -100,7 +100,7 @@
   </wsdl:binding>
   <wsdl:service name="CardInfoServiceImplService">
     <wsdl:port binding="tns:CardInfoServiceImplServiceSoapBinding" name="CardInfoServiceImplPort">
-      <soap:address location="https://jqvar.dev.it.su.se/CardInfoService"/>
+      <soap:address location="http://jqvarlocal.it.su.se:8080/CardInfoService"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

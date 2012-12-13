@@ -53,7 +53,7 @@
   </wsdl:binding>
   <wsdl:service name="EnrollmentServiceImplService">
     <wsdl:port binding="tns:EnrollmentServiceImplServiceSoapBinding" name="EnrollmentServiceImplPort">
-      <soap:address location="https://jqvar.dev.it.su.se/EnrollmentService"/>
+      <soap:address location="http://jqvarlocal.it.su.se:8080/EnrollmentService"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

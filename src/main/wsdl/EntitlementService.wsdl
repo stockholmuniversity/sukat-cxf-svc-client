@@ -87,7 +87,7 @@
   </wsdl:binding>
   <wsdl:service name="EntitlementServiceImplService">
     <wsdl:port binding="tns:EntitlementServiceImplServiceSoapBinding" name="EntitlementServiceImplPort">
-      <soap:address location="https://jqvar.dev.it.su.se/EntitlementService"/>
+      <soap:address location="http://jqvarlocal.it.su.se:8080/EntitlementService"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

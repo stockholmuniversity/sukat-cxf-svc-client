@@ -88,7 +88,7 @@
   </wsdl:binding>
   <wsdl:service name="AccountServiceImplService">
     <wsdl:port binding="tns:AccountServiceImplServiceSoapBinding" name="AccountServiceImplPort">
-      <soap:address location="https://jqvar.dev.it.su.se/AccountService"/>
+      <soap:address location="http://jqvarlocal.it.su.se:8080/AccountService"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
