@@ -27,6 +27,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <cxf.version>2.6.1</cxf.version>
+    <sonar.language>java</sonar.language>
   </properties>
   <dependencies>
     <dependency>
