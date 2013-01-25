@@ -258,7 +258,7 @@
   </wsdl:binding>
   <wsdl:service name="ServiceServiceImplService">
     <wsdl:port binding="tns:ServiceServiceImplServiceSoapBinding" name="ServiceServiceImplPort">
-      <soap:address location="http://jqvarlocal.it.su.se:8080/ServiceService"/>
+      <soap:address location="https://jqvarlocal.it.su.se/ServiceService"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

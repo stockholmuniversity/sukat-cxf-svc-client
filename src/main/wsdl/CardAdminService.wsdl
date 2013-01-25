@@ -86,7 +86,7 @@
   </wsdl:binding>
   <wsdl:service name="CardAdminServiceImplService">
     <wsdl:port binding="tns:CardAdminServiceImplServiceSoapBinding" name="CardAdminServiceImplPort">
-      <soap:address location="http://jqvarlocal.it.su.se:8080/CardAdminService"/>
+      <soap:address location="https://jqvarlocal.it.su.se/CardAdminService"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

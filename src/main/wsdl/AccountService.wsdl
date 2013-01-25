@@ -44,7 +44,11 @@
       </xs:simpleType>
     </xs:attribute>
     <xs:attribute name="labeledURI" type="xs:string"/>
-    <xs:attribute name="mail" type="xs:string"/>
+    <xs:attribute name="mail">
+      <xs:simpleType>
+        <xs:list itemType="xs:string"/>
+      </xs:simpleType>
+    </xs:attribute>
     <xs:attribute name="mailLocalAddress">
       <xs:simpleType>
         <xs:list itemType="xs:string"/>
@@ -181,7 +185,7 @@
   </wsdl:binding>
   <wsdl:service name="AccountServiceImplService">
     <wsdl:port binding="tns:AccountServiceImplServiceSoapBinding" name="AccountServiceImplPort">
-      <soap:address location="http://jqvarlocal.it.su.se:8080/AccountService"/>
+      <soap:address location="https://jqvarlocal.it.su.se/AccountService"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
