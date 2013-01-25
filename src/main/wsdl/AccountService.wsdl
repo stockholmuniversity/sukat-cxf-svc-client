@@ -4,14 +4,74 @@
 <xs:element name="resetPassword" type="tns:resetPassword"/>
 <xs:element name="resetPasswordResponse" type="tns:resetPasswordResponse"/>
 <xs:element name="svcAudit" type="tns:svcAudit"/>
+<xs:element name="svcSuPersonVO" type="tns:svcSuPersonVO"/>
 <xs:element name="updatePrimaryAffiliation" type="tns:updatePrimaryAffiliation"/>
 <xs:element name="updatePrimaryAffiliationResponse" type="tns:updatePrimaryAffiliationResponse"/>
-<xs:complexType name="updatePrimaryAffiliation">
+<xs:element name="updateSuPerson" type="tns:updateSuPerson"/>
+<xs:element name="updateSuPersonResponse" type="tns:updateSuPersonResponse"/>
+<xs:complexType name="updateSuPerson">
     <xs:sequence>
       <xs:element minOccurs="0" name="uid" type="xs:string"/>
-      <xs:element minOccurs="0" name="affiliation" type="xs:string"/>
+      <xs:element minOccurs="0" name="person" type="tns:svcSuPersonVO"/>
       <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
     </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="svcSuPersonVO">
+    <xs:sequence/>
+    <xs:attribute name="eduPersonPrimaryAffiliation" type="xs:string"/>
+    <xs:attribute name="eduPersonAffiliation">
+      <xs:simpleType>
+        <xs:list itemType="xs:string"/>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="eduPersonEntitlement">
+      <xs:simpleType>
+        <xs:list itemType="xs:string"/>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="socialSecurityNumber" type="xs:string"/>
+    <xs:attribute name="givenName" type="xs:string"/>
+    <xs:attribute name="sn" type="xs:string"/>
+    <xs:attribute name="cn" type="xs:string"/>
+    <xs:attribute name="displayName" type="xs:string"/>
+    <xs:attribute name="title" type="xs:string"/>
+    <xs:attribute name="roomNumber" type="xs:string"/>
+    <xs:attribute name="telephoneNumber" type="xs:string"/>
+    <xs:attribute name="mobile" type="xs:string"/>
+    <xs:attribute name="sukatPULAttributes">
+      <xs:simpleType>
+        <xs:list itemType="xs:string"/>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="labeledURI" type="xs:string"/>
+    <xs:attribute name="mail" type="xs:string"/>
+    <xs:attribute name="mailLocalAddress">
+      <xs:simpleType>
+        <xs:list itemType="xs:string"/>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="sukatLOAFromDate" type="xs:string"/>
+    <xs:attribute name="sukatLOAToDate" type="xs:string"/>
+    <xs:attribute name="eduPersonOrgUnitDN">
+      <xs:simpleType>
+        <xs:list itemType="xs:string"/>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="eduPersonPrimaryOrgUnitDN" type="xs:string"/>
+    <xs:attribute name="registeredAddress" type="xs:string"/>
+    <xs:attribute name="mailRoutingAddress" type="xs:string"/>
+    <xs:attribute name="departmentNumber" type="xs:string"/>
+    <xs:attribute name="homeMobilePhone" type="xs:string"/>
+    <xs:attribute name="homePhone" type="xs:string"/>
+    <xs:attribute name="homePostalAddress">
+      <xs:simpleType>
+        <xs:list itemType="xs:string"/>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="homeLocalityName" type="xs:string"/>
+    <xs:attribute name="homePostalCode" type="xs:string"/>
+    <xs:attribute name="description" type="xs:string"/>
+    <xs:attribute name="sukatComment" type="xs:string"/>
   </xs:complexType>
 <xs:complexType name="svcAudit">
     <xs:sequence/>
@@ -19,13 +79,23 @@
     <xs:attribute name="ipAddress" type="xs:string"/>
     <xs:attribute name="client" type="xs:string"/>
   </xs:complexType>
+<xs:complexType name="updateSuPersonResponse">
+    <xs:sequence/>
+  </xs:complexType>
+<xs:complexType name="updatePrimaryAffiliation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="uid" type="xs:string"/>
+      <xs:element minOccurs="0" name="affiliation" type="xs:string"/>
+      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
+    </xs:sequence>
+  </xs:complexType>
 <xs:complexType name="updatePrimaryAffiliationResponse">
     <xs:sequence/>
   </xs:complexType>
 <xs:complexType name="resetPassword">
     <xs:sequence>
-      <xs:element minOccurs="0" name="arg0" type="xs:string"/>
-      <xs:element minOccurs="0" name="arg1" type="tns:svcAudit"/>
+      <xs:element minOccurs="0" name="uid" type="xs:string"/>
+      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
     </xs:sequence>
   </xs:complexType>
 <xs:complexType name="resetPasswordResponse">
@@ -39,6 +109,10 @@
     <wsdl:part element="tns:resetPasswordResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="updateSuPerson">
+    <wsdl:part element="tns:updateSuPerson" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="updatePrimaryAffiliationResponse">
     <wsdl:part element="tns:updatePrimaryAffiliationResponse" name="parameters">
     </wsdl:part>
@@ -47,11 +121,21 @@
     <wsdl:part element="tns:resetPassword" name="parameters">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="updateSuPersonResponse">
+    <wsdl:part element="tns:updateSuPersonResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="updatePrimaryAffiliation">
     <wsdl:part element="tns:updatePrimaryAffiliation" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:portType name="AccountServiceImpl">
+    <wsdl:operation name="updateSuPerson">
+      <wsdl:input message="tns:updateSuPerson" name="updateSuPerson">
+    </wsdl:input>
+      <wsdl:output message="tns:updateSuPersonResponse" name="updateSuPersonResponse">
+    </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="updatePrimaryAffiliation">
       <wsdl:input message="tns:updatePrimaryAffiliation" name="updatePrimaryAffiliation">
     </wsdl:input>
@@ -67,6 +151,15 @@
   </wsdl:portType>
   <wsdl:binding name="AccountServiceImplServiceSoapBinding" type="tns:AccountServiceImpl">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="updateSuPerson">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="updateSuPerson">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateSuPersonResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="updatePrimaryAffiliation">
       <soap:operation soapAction="" style="document"/>
       <wsdl:input name="updatePrimaryAffiliation">
