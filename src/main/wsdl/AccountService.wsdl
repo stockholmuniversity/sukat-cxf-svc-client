@@ -12,6 +12,7 @@
 <xs:complexType name="updateSuPerson">
     <xs:sequence>
       <xs:element minOccurs="0" name="uid" type="xs:string"/>
+      <xs:element minOccurs="0" name="roleDN" type="xs:string"/>
       <xs:element minOccurs="0" name="person" type="tns:svcSuPersonVO"/>
       <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
     </xs:sequence>
