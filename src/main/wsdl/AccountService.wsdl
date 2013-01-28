@@ -17,18 +17,16 @@
     </xs:sequence>
   </xs:complexType>
 <xs:complexType name="svcSuPersonVO">
-    <xs:sequence/>
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="eduPersonAffiliation" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="eduPersonEntitlement" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="sukatPULAttributes" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="mail" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="mailLocalAddress" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="eduPersonOrgUnitDN" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="homePostalAddress" type="xs:string"/>
+    </xs:sequence>
     <xs:attribute name="eduPersonPrimaryAffiliation" type="xs:string"/>
-    <xs:attribute name="eduPersonAffiliation">
-      <xs:simpleType>
-        <xs:list itemType="xs:string"/>
-      </xs:simpleType>
-    </xs:attribute>
-    <xs:attribute name="eduPersonEntitlement">
-      <xs:simpleType>
-        <xs:list itemType="xs:string"/>
-      </xs:simpleType>
-    </xs:attribute>
     <xs:attribute name="socialSecurityNumber" type="xs:string"/>
     <xs:attribute name="givenName" type="xs:string"/>
     <xs:attribute name="sn" type="xs:string"/>
@@ -38,40 +36,15 @@
     <xs:attribute name="roomNumber" type="xs:string"/>
     <xs:attribute name="telephoneNumber" type="xs:string"/>
     <xs:attribute name="mobile" type="xs:string"/>
-    <xs:attribute name="sukatPULAttributes">
-      <xs:simpleType>
-        <xs:list itemType="xs:string"/>
-      </xs:simpleType>
-    </xs:attribute>
     <xs:attribute name="labeledURI" type="xs:string"/>
-    <xs:attribute name="mail">
-      <xs:simpleType>
-        <xs:list itemType="xs:string"/>
-      </xs:simpleType>
-    </xs:attribute>
-    <xs:attribute name="mailLocalAddress">
-      <xs:simpleType>
-        <xs:list itemType="xs:string"/>
-      </xs:simpleType>
-    </xs:attribute>
     <xs:attribute name="sukatLOAFromDate" type="xs:string"/>
     <xs:attribute name="sukatLOAToDate" type="xs:string"/>
-    <xs:attribute name="eduPersonOrgUnitDN">
-      <xs:simpleType>
-        <xs:list itemType="xs:string"/>
-      </xs:simpleType>
-    </xs:attribute>
     <xs:attribute name="eduPersonPrimaryOrgUnitDN" type="xs:string"/>
     <xs:attribute name="registeredAddress" type="xs:string"/>
     <xs:attribute name="mailRoutingAddress" type="xs:string"/>
     <xs:attribute name="departmentNumber" type="xs:string"/>
     <xs:attribute name="homeMobilePhone" type="xs:string"/>
     <xs:attribute name="homePhone" type="xs:string"/>
-    <xs:attribute name="homePostalAddress">
-      <xs:simpleType>
-        <xs:list itemType="xs:string"/>
-      </xs:simpleType>
-    </xs:attribute>
     <xs:attribute name="homeLocalityName" type="xs:string"/>
     <xs:attribute name="homePostalCode" type="xs:string"/>
     <xs:attribute name="description" type="xs:string"/>
