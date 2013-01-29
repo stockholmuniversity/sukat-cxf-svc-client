@@ -16,6 +16,8 @@
       <xs:element minOccurs="0" name="uid" type="xs:string"/>
       <xs:element minOccurs="0" name="domain" type="xs:string"/>
       <xs:element minOccurs="0" name="nin" type="xs:string"/>
+      <xs:element minOccurs="0" name="givenName" type="xs:string"/>
+      <xs:element minOccurs="0" name="sn" type="xs:string"/>
       <xs:element minOccurs="0" name="role" type="xs:string"/>
       <xs:element minOccurs="0" name="person" type="tns:svcSuPersonVO"/>
       <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
@@ -35,7 +37,6 @@
     <xs:attribute name="socialSecurityNumber" type="xs:string"/>
     <xs:attribute name="givenName" type="xs:string"/>
     <xs:attribute name="sn" type="xs:string"/>
-    <xs:attribute name="cn" type="xs:string"/>
     <xs:attribute name="displayName" type="xs:string"/>
     <xs:attribute name="title" type="xs:string"/>
     <xs:attribute name="roomNumber" type="xs:string"/>
