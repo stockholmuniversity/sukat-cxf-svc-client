@@ -1,6 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="AccountServiceImplService" targetNamespace="http://svc.it.su.se/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://svc.it.su.se/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
   <wsdl:types>
 <xs:schema elementFormDefault="unqualified" targetNamespace="http://svc.it.su.se/" version="1.0" xmlns:tns="http://svc.it.su.se/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="createSuPerson" type="tns:createSuPerson"/>
+<xs:element name="createSuPersonResponse" type="tns:createSuPersonResponse"/>
 <xs:element name="resetPassword" type="tns:resetPassword"/>
 <xs:element name="resetPasswordResponse" type="tns:resetPasswordResponse"/>
 <xs:element name="svcAudit" type="tns:svcAudit"/>
@@ -9,10 +11,12 @@
 <xs:element name="updatePrimaryAffiliationResponse" type="tns:updatePrimaryAffiliationResponse"/>
 <xs:element name="updateSuPerson" type="tns:updateSuPerson"/>
 <xs:element name="updateSuPersonResponse" type="tns:updateSuPersonResponse"/>
-<xs:complexType name="updateSuPerson">
+<xs:complexType name="createSuPerson">
     <xs:sequence>
       <xs:element minOccurs="0" name="uid" type="xs:string"/>
-      <xs:element minOccurs="0" name="roleDN" type="xs:string"/>
+      <xs:element minOccurs="0" name="domain" type="xs:string"/>
+      <xs:element minOccurs="0" name="nin" type="xs:string"/>
+      <xs:element minOccurs="0" name="role" type="xs:string"/>
       <xs:element minOccurs="0" name="person" type="tns:svcSuPersonVO"/>
       <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
     </xs:sequence>
@@ -57,6 +61,19 @@
     <xs:attribute name="ipAddress" type="xs:string"/>
     <xs:attribute name="client" type="xs:string"/>
   </xs:complexType>
+<xs:complexType name="createSuPersonResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="updateSuPerson">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="uid" type="xs:string"/>
+      <xs:element minOccurs="0" name="roleDN" type="xs:string"/>
+      <xs:element minOccurs="0" name="person" type="tns:svcSuPersonVO"/>
+      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
+    </xs:sequence>
+  </xs:complexType>
 <xs:complexType name="updateSuPersonResponse">
     <xs:sequence/>
   </xs:complexType>
@@ -91,8 +108,16 @@
     <wsdl:part element="tns:updateSuPerson" name="parameters">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="createSuPerson">
+    <wsdl:part element="tns:createSuPerson" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="updatePrimaryAffiliationResponse">
     <wsdl:part element="tns:updatePrimaryAffiliationResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createSuPersonResponse">
+    <wsdl:part element="tns:createSuPersonResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="resetPassword">
@@ -108,6 +133,12 @@
     </wsdl:part>
   </wsdl:message>
   <wsdl:portType name="AccountServiceImpl">
+    <wsdl:operation name="createSuPerson">
+      <wsdl:input message="tns:createSuPerson" name="createSuPerson">
+    </wsdl:input>
+      <wsdl:output message="tns:createSuPersonResponse" name="createSuPersonResponse">
+    </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="updateSuPerson">
       <wsdl:input message="tns:updateSuPerson" name="updateSuPerson">
     </wsdl:input>
@@ -129,6 +160,15 @@
   </wsdl:portType>
   <wsdl:binding name="AccountServiceImplServiceSoapBinding" type="tns:AccountServiceImpl">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="createSuPerson">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createSuPerson">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createSuPersonResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="updateSuPerson">
       <soap:operation soapAction="" style="document"/>
       <wsdl:input name="updateSuPerson">
