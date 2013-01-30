@@ -18,7 +18,7 @@
       <xs:element minOccurs="0" name="nin" type="xs:string"/>
       <xs:element minOccurs="0" name="givenName" type="xs:string"/>
       <xs:element minOccurs="0" name="sn" type="xs:string"/>
-      <xs:element minOccurs="0" name="role" type="xs:string"/>
+      <xs:element minOccurs="0" name="roleDN" type="xs:string"/>
       <xs:element minOccurs="0" name="person" type="tns:svcSuPersonVO"/>
       <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
     </xs:sequence>
