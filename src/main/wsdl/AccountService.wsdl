@@ -26,6 +26,7 @@
     <xs:sequence>
       <xs:element maxOccurs="unbounded" minOccurs="0" name="eduPersonAffiliation" type="xs:string"/>
       <xs:element maxOccurs="unbounded" minOccurs="0" name="eduPersonEntitlement" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="title" type="xs:string"/>
       <xs:element maxOccurs="unbounded" minOccurs="0" name="sukatPULAttributes" type="xs:string"/>
       <xs:element maxOccurs="unbounded" minOccurs="0" name="mail" type="xs:string"/>
       <xs:element maxOccurs="unbounded" minOccurs="0" name="mailLocalAddress" type="xs:string"/>
@@ -37,7 +38,6 @@
     <xs:attribute name="givenName" type="xs:string"/>
     <xs:attribute name="sn" type="xs:string"/>
     <xs:attribute name="displayName" type="xs:string"/>
-    <xs:attribute name="title" type="xs:string"/>
     <xs:attribute name="roomNumber" type="xs:string"/>
     <xs:attribute name="telephoneNumber" type="xs:string"/>
     <xs:attribute name="mobile" type="xs:string"/>
