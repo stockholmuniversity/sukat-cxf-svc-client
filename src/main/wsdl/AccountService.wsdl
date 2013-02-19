@@ -19,6 +19,7 @@
       <xs:element minOccurs="0" name="givenName" type="xs:string"/>
       <xs:element minOccurs="0" name="sn" type="xs:string"/>
       <xs:element minOccurs="0" name="person" type="tns:svcSuPersonVO"/>
+      <xs:element name="fullAccount" type="xs:boolean"/>
       <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
     </xs:sequence>
   </xs:complexType>
