@@ -7,6 +7,8 @@
 <xs:element name="resetPasswordResponse" type="tns:resetPasswordResponse"/>
 <xs:element name="svcAudit" type="tns:svcAudit"/>
 <xs:element name="svcSuPersonVO" type="tns:svcSuPersonVO"/>
+<xs:element name="terminateSuPerson" type="tns:terminateSuPerson"/>
+<xs:element name="terminateSuPersonResponse" type="tns:terminateSuPersonResponse"/>
 <xs:element name="updatePrimaryAffiliation" type="tns:updatePrimaryAffiliation"/>
 <xs:element name="updatePrimaryAffiliationResponse" type="tns:updatePrimaryAffiliationResponse"/>
 <xs:element name="updateSuPerson" type="tns:updateSuPerson"/>
@@ -87,6 +89,15 @@
 <xs:complexType name="updatePrimaryAffiliationResponse">
     <xs:sequence/>
   </xs:complexType>
+<xs:complexType name="terminateSuPerson">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="uid" type="xs:string"/>
+      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="terminateSuPersonResponse">
+    <xs:sequence/>
+  </xs:complexType>
 <xs:complexType name="resetPassword">
     <xs:sequence>
       <xs:element minOccurs="0" name="uid" type="xs:string"/>
@@ -128,6 +139,14 @@
     <wsdl:part element="tns:updateSuPersonResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="terminateSuPersonResponse">
+    <wsdl:part element="tns:terminateSuPersonResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="terminateSuPerson">
+    <wsdl:part element="tns:terminateSuPerson" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="updatePrimaryAffiliation">
     <wsdl:part element="tns:updatePrimaryAffiliation" name="parameters">
     </wsdl:part>
@@ -149,6 +168,12 @@
       <wsdl:input message="tns:updatePrimaryAffiliation" name="updatePrimaryAffiliation">
     </wsdl:input>
       <wsdl:output message="tns:updatePrimaryAffiliationResponse" name="updatePrimaryAffiliationResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="terminateSuPerson">
+      <wsdl:input message="tns:terminateSuPerson" name="terminateSuPerson">
+    </wsdl:input>
+      <wsdl:output message="tns:terminateSuPersonResponse" name="terminateSuPersonResponse">
     </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="resetPassword">
@@ -193,6 +218,15 @@
         <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="resetPasswordResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="terminateSuPerson">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="terminateSuPerson">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="terminateSuPersonResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
