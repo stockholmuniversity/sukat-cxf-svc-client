@@ -104,6 +104,17 @@
 <xs:complexType name="setMailRoutingAddressResponse">
     <xs:sequence/>
   </xs:complexType>
+<xs:complexType name="resetPassword">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="uid" type="xs:string"/>
+      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="resetPasswordResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
 <xs:complexType name="updatePrimaryAffiliation">
     <xs:sequence>
       <xs:element minOccurs="0" name="uid" type="xs:string"/>
@@ -123,25 +134,14 @@
 <xs:complexType name="terminateSuPersonResponse">
     <xs:sequence/>
   </xs:complexType>
-<xs:complexType name="resetPassword">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="uid" type="xs:string"/>
-      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
-    </xs:sequence>
-  </xs:complexType>
-<xs:complexType name="resetPasswordResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="xs:string"/>
-    </xs:sequence>
-  </xs:complexType>
 </xs:schema>
   </wsdl:types>
-  <wsdl:message name="resetPasswordResponse">
-    <wsdl:part element="tns:resetPasswordResponse" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
   <wsdl:message name="updateSuPerson">
     <wsdl:part element="tns:updateSuPerson" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="resetPasswordResponse">
+    <wsdl:part element="tns:resetPasswordResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="getMailRoutingAddress">
@@ -164,12 +164,12 @@
     <wsdl:part element="tns:terminateSuPersonResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
-  <wsdl:message name="updatePrimaryAffiliation">
-    <wsdl:part element="tns:updatePrimaryAffiliation" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
   <wsdl:message name="terminateSuPerson">
     <wsdl:part element="tns:terminateSuPerson" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updatePrimaryAffiliation">
+    <wsdl:part element="tns:updatePrimaryAffiliation" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="createSuPerson">
@@ -217,6 +217,12 @@
       <wsdl:output message="tns:setMailRoutingAddressResponse" name="setMailRoutingAddressResponse">
     </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="resetPassword">
+      <wsdl:input message="tns:resetPassword" name="resetPassword">
+    </wsdl:input>
+      <wsdl:output message="tns:resetPasswordResponse" name="resetPasswordResponse">
+    </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="updatePrimaryAffiliation">
       <wsdl:input message="tns:updatePrimaryAffiliation" name="updatePrimaryAffiliation">
     </wsdl:input>
@@ -227,12 +233,6 @@
       <wsdl:input message="tns:terminateSuPerson" name="terminateSuPerson">
     </wsdl:input>
       <wsdl:output message="tns:terminateSuPersonResponse" name="terminateSuPersonResponse">
-    </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="resetPassword">
-      <wsdl:input message="tns:resetPassword" name="resetPassword">
-    </wsdl:input>
-      <wsdl:output message="tns:resetPasswordResponse" name="resetPasswordResponse">
     </wsdl:output>
     </wsdl:operation>
   </wsdl:portType>
@@ -274,21 +274,21 @@
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="updatePrimaryAffiliation">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="updatePrimaryAffiliation">
-        <soap:body use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="updatePrimaryAffiliationResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="resetPassword">
       <soap:operation soapAction="" style="document"/>
       <wsdl:input name="resetPassword">
         <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="resetPasswordResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updatePrimaryAffiliation">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="updatePrimaryAffiliation">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updatePrimaryAffiliationResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>

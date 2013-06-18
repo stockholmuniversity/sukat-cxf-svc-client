@@ -7,9 +7,10 @@
 <xs:element name="getCardByUUIDResponse" type="tns:getCardByUUIDResponse"/>
 <xs:element name="suCard" type="tns:suCard"/>
 <xs:element name="svcAudit" type="tns:svcAudit"/>
-<xs:complexType name="getCardByUUID">
+<xs:complexType name="getAllCards">
     <xs:sequence>
-      <xs:element minOccurs="0" name="suCardUUID" type="xs:string"/>
+      <xs:element minOccurs="0" name="uid" type="xs:string"/>
+      <xs:element name="onlyActive" type="xs:boolean"/>
       <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
     </xs:sequence>
   </xs:complexType>
@@ -19,9 +20,9 @@
     <xs:attribute name="ipAddress" type="xs:string"/>
     <xs:attribute name="client" type="xs:string"/>
   </xs:complexType>
-<xs:complexType name="getCardByUUIDResponse">
+<xs:complexType name="getAllCardsResponse">
     <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:suCard"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:suCard"/>
     </xs:sequence>
   </xs:complexType>
 <xs:complexType name="suCard">
@@ -33,16 +34,15 @@
     <xs:attribute name="suCardState" type="xs:string"/>
     <xs:attribute name="suCardPIN" type="xs:string"/>
   </xs:complexType>
-<xs:complexType name="getAllCards">
+<xs:complexType name="getCardByUUID">
     <xs:sequence>
-      <xs:element minOccurs="0" name="uid" type="xs:string"/>
-      <xs:element name="onlyActive" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="suCardUUID" type="xs:string"/>
       <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
     </xs:sequence>
   </xs:complexType>
-<xs:complexType name="getAllCardsResponse">
+<xs:complexType name="getCardByUUIDResponse">
     <xs:sequence>
-      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:suCard"/>
+      <xs:element minOccurs="0" name="return" type="tns:suCard"/>
     </xs:sequence>
   </xs:complexType>
 </xs:schema>
@@ -64,36 +64,36 @@
     </wsdl:part>
   </wsdl:message>
   <wsdl:portType name="CardInfoServiceImpl">
-    <wsdl:operation name="getCardByUUID">
-      <wsdl:input message="tns:getCardByUUID" name="getCardByUUID">
-    </wsdl:input>
-      <wsdl:output message="tns:getCardByUUIDResponse" name="getCardByUUIDResponse">
-    </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="getAllCards">
       <wsdl:input message="tns:getAllCards" name="getAllCards">
     </wsdl:input>
       <wsdl:output message="tns:getAllCardsResponse" name="getAllCardsResponse">
     </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getCardByUUID">
+      <wsdl:input message="tns:getCardByUUID" name="getCardByUUID">
+    </wsdl:input>
+      <wsdl:output message="tns:getCardByUUIDResponse" name="getCardByUUIDResponse">
+    </wsdl:output>
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="CardInfoServiceImplServiceSoapBinding" type="tns:CardInfoServiceImpl">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
-    <wsdl:operation name="getCardByUUID">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="getCardByUUID">
-        <soap:body use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="getCardByUUIDResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="getAllCards">
       <soap:operation soapAction="" style="document"/>
       <wsdl:input name="getAllCards">
         <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="getAllCardsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCardByUUID">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getCardByUUID">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCardByUUIDResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
