@@ -3,6 +3,10 @@
 <xs:schema elementFormDefault="unqualified" targetNamespace="http://svc.it.su.se/" version="1.0" xmlns:tns="http://svc.it.su.se/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
 <xs:element name="createSuPerson" type="tns:createSuPerson"/>
 <xs:element name="createSuPersonResponse" type="tns:createSuPersonResponse"/>
+<xs:element name="findSuPersonByNorEduPersonNIN" type="tns:findSuPersonByNorEduPersonNIN"/>
+<xs:element name="findSuPersonByNorEduPersonNINResponse" type="tns:findSuPersonByNorEduPersonNINResponse"/>
+<xs:element name="findSuPersonBySocialSecurityNumber" type="tns:findSuPersonBySocialSecurityNumber"/>
+<xs:element name="findSuPersonBySocialSecurityNumberResponse" type="tns:findSuPersonBySocialSecurityNumberResponse"/>
 <xs:element name="getMailRoutingAddress" type="tns:getMailRoutingAddress"/>
 <xs:element name="getMailRoutingAddressResponse" type="tns:getMailRoutingAddressResponse"/>
 <xs:element name="resetPassword" type="tns:resetPassword"/>
@@ -37,6 +41,7 @@
       <xs:element maxOccurs="unbounded" minOccurs="0" name="eduPersonOrgUnitDN" type="xs:string"/>
       <xs:element maxOccurs="unbounded" minOccurs="0" name="homePostalAddress" type="xs:string"/>
     </xs:sequence>
+    <xs:attribute name="uid" type="xs:string"/>
     <xs:attribute name="eduPersonPrimaryAffiliation" type="xs:string"/>
     <xs:attribute name="socialSecurityNumber" type="xs:string"/>
     <xs:attribute name="givenName" type="xs:string"/>
@@ -77,6 +82,17 @@
       <xs:element minOccurs="0" name="return" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
+<xs:complexType name="findSuPersonBySocialSecurityNumber">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="socialSecurityNumber" type="xs:string"/>
+      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="findSuPersonBySocialSecurityNumberResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:svcSuPersonVO"/>
+    </xs:sequence>
+  </xs:complexType>
 <xs:complexType name="createSuPerson">
     <xs:sequence>
       <xs:element minOccurs="0" name="uid" type="xs:string"/>
@@ -115,6 +131,17 @@
       <xs:element minOccurs="0" name="return" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
+<xs:complexType name="findSuPersonByNorEduPersonNIN">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="norEduPersonNIN" type="xs:string"/>
+      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="findSuPersonByNorEduPersonNINResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:svcSuPersonVO"/>
+    </xs:sequence>
+  </xs:complexType>
 <xs:complexType name="updatePrimaryAffiliation">
     <xs:sequence>
       <xs:element minOccurs="0" name="uid" type="xs:string"/>
@@ -148,12 +175,20 @@
     <wsdl:part element="tns:getMailRoutingAddress" name="parameters">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="findSuPersonBySocialSecurityNumberResponse">
+    <wsdl:part element="tns:findSuPersonBySocialSecurityNumberResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="setMailRoutingAddress">
     <wsdl:part element="tns:setMailRoutingAddress" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="createSuPersonResponse">
     <wsdl:part element="tns:createSuPersonResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findSuPersonByNorEduPersonNIN">
+    <wsdl:part element="tns:findSuPersonByNorEduPersonNIN" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="setMailRoutingAddressResponse">
@@ -176,8 +211,16 @@
     <wsdl:part element="tns:createSuPerson" name="parameters">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="findSuPersonBySocialSecurityNumber">
+    <wsdl:part element="tns:findSuPersonBySocialSecurityNumber" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="updatePrimaryAffiliationResponse">
     <wsdl:part element="tns:updatePrimaryAffiliationResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findSuPersonByNorEduPersonNINResponse">
+    <wsdl:part element="tns:findSuPersonByNorEduPersonNINResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="getMailRoutingAddressResponse">
@@ -205,6 +248,12 @@
       <wsdl:output message="tns:getMailRoutingAddressResponse" name="getMailRoutingAddressResponse">
     </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="findSuPersonBySocialSecurityNumber">
+      <wsdl:input message="tns:findSuPersonBySocialSecurityNumber" name="findSuPersonBySocialSecurityNumber">
+    </wsdl:input>
+      <wsdl:output message="tns:findSuPersonBySocialSecurityNumberResponse" name="findSuPersonBySocialSecurityNumberResponse">
+    </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="createSuPerson">
       <wsdl:input message="tns:createSuPerson" name="createSuPerson">
     </wsdl:input>
@@ -221,6 +270,12 @@
       <wsdl:input message="tns:resetPassword" name="resetPassword">
     </wsdl:input>
       <wsdl:output message="tns:resetPasswordResponse" name="resetPasswordResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findSuPersonByNorEduPersonNIN">
+      <wsdl:input message="tns:findSuPersonByNorEduPersonNIN" name="findSuPersonByNorEduPersonNIN">
+    </wsdl:input>
+      <wsdl:output message="tns:findSuPersonByNorEduPersonNINResponse" name="findSuPersonByNorEduPersonNINResponse">
     </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="updatePrimaryAffiliation">
@@ -265,6 +320,15 @@
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="findSuPersonBySocialSecurityNumber">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findSuPersonBySocialSecurityNumber">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findSuPersonBySocialSecurityNumberResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="setMailRoutingAddress">
       <soap:operation soapAction="" style="document"/>
       <wsdl:input name="setMailRoutingAddress">
@@ -280,6 +344,15 @@
         <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="resetPasswordResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findSuPersonByNorEduPersonNIN">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findSuPersonByNorEduPersonNIN">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findSuPersonByNorEduPersonNINResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
@@ -304,7 +377,7 @@
   </wsdl:binding>
   <wsdl:service name="AccountServiceImplService">
     <wsdl:port binding="tns:AccountServiceImplServiceSoapBinding" name="AccountServiceImplPort">
-      <soap:address location="https://jqvarlocal.it.su.se/AccountService"/>
+      <soap:address location="http://127.0.0.1:8080/AccountService"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

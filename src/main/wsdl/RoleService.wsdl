@@ -87,7 +87,7 @@
   </wsdl:binding>
   <wsdl:service name="RoleServiceImplService">
     <wsdl:port binding="tns:RoleServiceImplServiceSoapBinding" name="RoleServiceImplPort">
-      <soap:address location="https://jqvarlocal.it.su.se/RoleService"/>
+      <soap:address location="http://127.0.0.1:8080/RoleService"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
