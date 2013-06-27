@@ -7,6 +7,8 @@
 <xs:element name="findSuPersonByNorEduPersonNINResponse" type="tns:findSuPersonByNorEduPersonNINResponse"/>
 <xs:element name="findSuPersonBySocialSecurityNumber" type="tns:findSuPersonBySocialSecurityNumber"/>
 <xs:element name="findSuPersonBySocialSecurityNumberResponse" type="tns:findSuPersonBySocialSecurityNumberResponse"/>
+<xs:element name="findSuPersonByUid" type="tns:findSuPersonByUid"/>
+<xs:element name="findSuPersonByUidResponse" type="tns:findSuPersonByUidResponse"/>
 <xs:element name="getMailRoutingAddress" type="tns:getMailRoutingAddress"/>
 <xs:element name="getMailRoutingAddressResponse" type="tns:getMailRoutingAddressResponse"/>
 <xs:element name="resetPassword" type="tns:resetPassword"/>
@@ -152,6 +154,17 @@
 <xs:complexType name="updatePrimaryAffiliationResponse">
     <xs:sequence/>
   </xs:complexType>
+<xs:complexType name="findSuPersonByUid">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="uid" type="xs:string"/>
+      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="findSuPersonByUidResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:svcSuPersonVO"/>
+    </xs:sequence>
+  </xs:complexType>
 <xs:complexType name="terminateSuPerson">
     <xs:sequence>
       <xs:element minOccurs="0" name="uid" type="xs:string"/>
@@ -173,6 +186,10 @@
   </wsdl:message>
   <wsdl:message name="getMailRoutingAddress">
     <wsdl:part element="tns:getMailRoutingAddress" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findSuPersonByUidResponse">
+    <wsdl:part element="tns:findSuPersonByUidResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="findSuPersonBySocialSecurityNumberResponse">
@@ -213,6 +230,10 @@
   </wsdl:message>
   <wsdl:message name="findSuPersonBySocialSecurityNumber">
     <wsdl:part element="tns:findSuPersonBySocialSecurityNumber" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findSuPersonByUid">
+    <wsdl:part element="tns:findSuPersonByUid" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="updatePrimaryAffiliationResponse">
@@ -284,6 +305,12 @@
       <wsdl:output message="tns:updatePrimaryAffiliationResponse" name="updatePrimaryAffiliationResponse">
     </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="findSuPersonByUid">
+      <wsdl:input message="tns:findSuPersonByUid" name="findSuPersonByUid">
+    </wsdl:input>
+      <wsdl:output message="tns:findSuPersonByUidResponse" name="findSuPersonByUidResponse">
+    </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="terminateSuPerson">
       <wsdl:input message="tns:terminateSuPerson" name="terminateSuPerson">
     </wsdl:input>
@@ -353,6 +380,15 @@
         <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="findSuPersonByNorEduPersonNINResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findSuPersonByUid">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findSuPersonByUid">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findSuPersonByUidResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
