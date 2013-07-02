@@ -5,25 +5,16 @@
 <xs:element name="findAllCardOrdersForUidResponse" type="tns:findAllCardOrdersForUidResponse"/>
 <xs:element name="getSuCardOrderQuery" type="tns:getSuCardOrderQuery"/>
 <xs:element name="getSuCardOrderQueryResponse" type="tns:getSuCardOrderQueryResponse"/>
+<xs:element name="orderCard" type="tns:orderCard"/>
+<xs:element name="orderCardResponse" type="tns:orderCardResponse"/>
 <xs:element name="setSuCardOrderQuery" type="tns:setSuCardOrderQuery"/>
 <xs:element name="setSuCardOrderQueryResponse" type="tns:setSuCardOrderQueryResponse"/>
 <xs:element name="svcAudit" type="tns:svcAudit"/>
 <xs:element name="svcCardOrderVO" type="tns:svcCardOrderVO"/>
-<xs:complexType name="findAllCardOrdersForUid">
+<xs:complexType name="orderCard">
     <xs:sequence>
-      <xs:element minOccurs="0" name="uid" type="xs:string"/>
-      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
-    </xs:sequence>
-  </xs:complexType>
-<xs:complexType name="svcAudit">
-    <xs:sequence/>
-    <xs:attribute name="uid" type="xs:string"/>
-    <xs:attribute name="ipAddress" type="xs:string"/>
-    <xs:attribute name="client" type="xs:string"/>
-  </xs:complexType>
-<xs:complexType name="findAllCardOrdersForUidResponse">
-    <xs:sequence>
-      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:svcCardOrderVO"/>
+      <xs:element minOccurs="0" name="arg0" type="tns:svcCardOrderVO"/>
+      <xs:element minOccurs="0" name="arg1" type="tns:svcAudit"/>
     </xs:sequence>
   </xs:complexType>
 <xs:complexType name="svcCardOrderVO">
@@ -41,6 +32,28 @@
     <xs:attribute name="zipcode" type="xs:string"/>
     <xs:attribute name="value" type="xs:string"/>
     <xs:attribute name="description" type="xs:string"/>
+  </xs:complexType>
+<xs:complexType name="svcAudit">
+    <xs:sequence/>
+    <xs:attribute name="uid" type="xs:string"/>
+    <xs:attribute name="ipAddress" type="xs:string"/>
+    <xs:attribute name="client" type="xs:string"/>
+  </xs:complexType>
+<xs:complexType name="orderCardResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="findAllCardOrdersForUid">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="uid" type="xs:string"/>
+      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="findAllCardOrdersForUidResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:svcCardOrderVO"/>
+    </xs:sequence>
   </xs:complexType>
 <xs:complexType name="setSuCardOrderQuery">
     <xs:sequence>
@@ -60,6 +73,14 @@
   </xs:complexType>
 </xs:schema>
   </wsdl:types>
+  <wsdl:message name="orderCardResponse">
+    <wsdl:part element="tns:orderCardResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="orderCard">
+    <wsdl:part element="tns:orderCard" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="getSuCardOrderQuery">
     <wsdl:part element="tns:getSuCardOrderQuery" name="parameters">
     </wsdl:part>
@@ -85,6 +106,12 @@
     </wsdl:part>
   </wsdl:message>
   <wsdl:portType name="CardOrderServiceImpl">
+    <wsdl:operation name="orderCard">
+      <wsdl:input message="tns:orderCard" name="orderCard">
+    </wsdl:input>
+      <wsdl:output message="tns:orderCardResponse" name="orderCardResponse">
+    </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="findAllCardOrdersForUid">
       <wsdl:input message="tns:findAllCardOrdersForUid" name="findAllCardOrdersForUid">
     </wsdl:input>
@@ -106,6 +133,15 @@
   </wsdl:portType>
   <wsdl:binding name="CardOrderServiceImplServiceSoapBinding" type="tns:CardOrderServiceImpl">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="orderCard">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="orderCard">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="orderCardResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="findAllCardOrdersForUid">
       <soap:operation soapAction="" style="document"/>
       <wsdl:input name="findAllCardOrdersForUid">
