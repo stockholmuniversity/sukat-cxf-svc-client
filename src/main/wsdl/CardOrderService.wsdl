@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="CardOrderServiceImplService" targetNamespace="http://svc.it.su.se/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://svc.it.su.se/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+<xs:schema elementFormDefault="unqualified" targetNamespace="http://svc.it.su.se/" version="1.0" xmlns:tns="http://svc.it.su.se/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="findAllCardOrdersForUid" type="tns:findAllCardOrdersForUid"/>
+<xs:element name="findAllCardOrdersForUidResponse" type="tns:findAllCardOrdersForUidResponse"/>
+<xs:element name="getSuCardOrderQuery" type="tns:getSuCardOrderQuery"/>
+<xs:element name="getSuCardOrderQueryResponse" type="tns:getSuCardOrderQueryResponse"/>
+<xs:element name="setSuCardOrderQuery" type="tns:setSuCardOrderQuery"/>
+<xs:element name="setSuCardOrderQueryResponse" type="tns:setSuCardOrderQueryResponse"/>
+<xs:element name="svcAudit" type="tns:svcAudit"/>
+<xs:element name="svcCardOrderVO" type="tns:svcCardOrderVO"/>
+<xs:complexType name="findAllCardOrdersForUid">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="uid" type="xs:string"/>
+      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="svcAudit">
+    <xs:sequence/>
+    <xs:attribute name="uid" type="xs:string"/>
+    <xs:attribute name="ipAddress" type="xs:string"/>
+    <xs:attribute name="client" type="xs:string"/>
+  </xs:complexType>
+<xs:complexType name="findAllCardOrdersForUidResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:svcCardOrderVO"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="svcCardOrderVO">
+    <xs:sequence/>
+    <xs:attribute name="id" type="xs:string"/>
+    <xs:attribute name="serial" type="xs:string"/>
+    <xs:attribute name="owner" type="xs:string"/>
+    <xs:attribute name="printer" type="xs:string"/>
+    <xs:attribute name="createTime" type="xs:dateTime"/>
+    <xs:attribute name="firstname" type="xs:string"/>
+    <xs:attribute name="lastname" type="xs:string"/>
+    <xs:attribute name="streetaddress1" type="xs:string"/>
+    <xs:attribute name="streetaddress2" type="xs:string"/>
+    <xs:attribute name="locality" type="xs:string"/>
+    <xs:attribute name="zipcode" type="xs:string"/>
+    <xs:attribute name="value" type="xs:string"/>
+    <xs:attribute name="description" type="xs:string"/>
+  </xs:complexType>
+<xs:complexType name="setSuCardOrderQuery">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:anyType"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="setSuCardOrderQueryResponse">
+    <xs:sequence/>
+  </xs:complexType>
+<xs:complexType name="getSuCardOrderQuery">
+    <xs:sequence/>
+  </xs:complexType>
+<xs:complexType name="getSuCardOrderQueryResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:anyType"/>
+    </xs:sequence>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getSuCardOrderQuery">
+    <wsdl:part element="tns:getSuCardOrderQuery" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="setSuCardOrderQueryResponse">
+    <wsdl:part element="tns:setSuCardOrderQueryResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="setSuCardOrderQuery">
+    <wsdl:part element="tns:setSuCardOrderQuery" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findAllCardOrdersForUid">
+    <wsdl:part element="tns:findAllCardOrdersForUid" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSuCardOrderQueryResponse">
+    <wsdl:part element="tns:getSuCardOrderQueryResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findAllCardOrdersForUidResponse">
+    <wsdl:part element="tns:findAllCardOrdersForUidResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="CardOrderServiceImpl">
+    <wsdl:operation name="findAllCardOrdersForUid">
+      <wsdl:input message="tns:findAllCardOrdersForUid" name="findAllCardOrdersForUid">
+    </wsdl:input>
+      <wsdl:output message="tns:findAllCardOrdersForUidResponse" name="findAllCardOrdersForUidResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setSuCardOrderQuery">
+      <wsdl:input message="tns:setSuCardOrderQuery" name="setSuCardOrderQuery">
+    </wsdl:input>
+      <wsdl:output message="tns:setSuCardOrderQueryResponse" name="setSuCardOrderQueryResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSuCardOrderQuery">
+      <wsdl:input message="tns:getSuCardOrderQuery" name="getSuCardOrderQuery">
+    </wsdl:input>
+      <wsdl:output message="tns:getSuCardOrderQueryResponse" name="getSuCardOrderQueryResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CardOrderServiceImplServiceSoapBinding" type="tns:CardOrderServiceImpl">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="findAllCardOrdersForUid">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findAllCardOrdersForUid">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findAllCardOrdersForUidResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setSuCardOrderQuery">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="setSuCardOrderQuery">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="setSuCardOrderQueryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSuCardOrderQuery">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getSuCardOrderQuery">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getSuCardOrderQueryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CardOrderServiceImplService">
+    <wsdl:port binding="tns:CardOrderServiceImplServiceSoapBinding" name="CardOrderServiceImplPort">
+      <soap:address location="http://127.0.0.1:8080/CardOrderService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
