@@ -3,7 +3,7 @@
   <groupId>se.su.it.cxf</groupId>
   <artifactId>sukat-cxf-svc-client</artifactId>
   <packaging>jar</packaging>
-  <version>1.0.5.2</version>
+  <version>1.0.5.3</version>
   <name>sukat-cxf-svc-client</name>
   <url>http://devel.it.su.se</url>
   <description>WebService Client for SU cxf services.</description>
@@ -85,6 +85,12 @@
               <wsdlOptions>
                 <wsdlOption>
                   <wsdl>${basedir}/src/main/wsdl/CardAdminService.wsdl</wsdl>
+                  <extraargs>
+                    <extraarg>-xjc-b,${basedir}/src/main/resources/fixserialize.xjb</extraarg>
+                  </extraargs>
+                </wsdlOption>
+                <wsdlOption>
+                  <wsdl>${basedir}/src/main/wsdl/CardOrderService.wsdl</wsdl>
                   <extraargs>
                     <extraarg>-xjc-b,${basedir}/src/main/resources/fixserialize.xjb</extraarg>
                   </extraargs>
