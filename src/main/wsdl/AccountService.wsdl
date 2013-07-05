@@ -63,6 +63,7 @@
     <xs:attribute name="homePostalCode" type="xs:string"/>
     <xs:attribute name="description" type="xs:string"/>
     <xs:attribute name="sukatComment" type="xs:string"/>
+    <xs:attribute name="accountIsActive" type="xs:boolean"/>
   </xs:complexType>
 <xs:complexType name="svcAudit">
     <xs:sequence/>
