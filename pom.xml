@@ -15,6 +15,13 @@
       <organization>Stockholm university</organization>
       <timezone>CET</timezone>
     </developer>
+    <developer>
+      <id>jolu</id>
+      <name>Joakim Lundin</name>
+      <email>joakim.lundin@su.se</email>
+      <organization>Stockholm university</organization>
+      <timezone>CET</timezone>
+    </developer>
   </developers>
   <scm>
     <connection>scm:git:ssh://git.it.su.se/git/sukat-cxf-svc-client</connection>
