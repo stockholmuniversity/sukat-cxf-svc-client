@@ -13,8 +13,8 @@
 <xs:element name="svcCardOrderVO" type="tns:svcCardOrderVO"/>
 <xs:complexType name="orderCard">
     <xs:sequence>
-      <xs:element minOccurs="0" name="arg0" type="tns:svcCardOrderVO"/>
-      <xs:element minOccurs="0" name="arg1" type="tns:svcAudit"/>
+      <xs:element minOccurs="0" name="cardOrderVO" type="tns:svcCardOrderVO"/>
+      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
     </xs:sequence>
   </xs:complexType>
 <xs:complexType name="svcCardOrderVO">
@@ -172,7 +172,7 @@
   </wsdl:binding>
   <wsdl:service name="CardOrderServiceImplService">
     <wsdl:port binding="tns:CardOrderServiceImplServiceSoapBinding" name="CardOrderServiceImplPort">
-      <soap:address location="http://127.0.0.1:8080/CardOrderService"/>
+      <soap:address location="http://localhost/CardOrderService"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
