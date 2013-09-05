@@ -3,14 +3,14 @@
 
 SERVERURL=`echo "$1" | sed -e "s/\/*$//"`
 if [ -z ${SERVERURL}  ]
-     then 
+     then
      echo "usage: $0 <serverurl>"
      echo "example: $0 https://myserver.su.se/"
      exit 10
  fi
 
 #space seperated list of wsdl files"
-WSDLFILES="CardAdminService.wsdl CardInfoService.wsdl EntitlementService.wsdl ServiceService.wsdl AccountService.wsdl EnrollmentService.wsdl Status.wsdl WebServiceAdmin.wsdl"
+WSDLFILES="CardAdminService.wsdl CardInfoService.wsdl CardOrderService.wsdl EntitlementService.wsdl ServiceService.wsdl AccountService.wsdl EnrollmentService.wsdl Status.wsdl WebServiceAdmin.wsdl"
 
 for file in $WSDLFILES; do
   base=`basename $file .wsdl`
