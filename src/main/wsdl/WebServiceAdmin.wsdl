@@ -187,7 +187,7 @@
   </wsdl:binding>
   <wsdl:service name="WebServiceAdminImplService">
     <wsdl:port binding="tns:WebServiceAdminImplServiceSoapBinding" name="WebServiceAdminImplPort">
-      <soap:address location="http://jqvarlocal.it.su.se:8080/WebServiceAdmin"/>
+      <soap:address location="http://localhost/WebServiceAdmin"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
