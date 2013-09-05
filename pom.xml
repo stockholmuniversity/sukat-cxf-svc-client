@@ -109,12 +109,6 @@
                   </extraargs>
                 </wsdlOption>
                 <wsdlOption>
-                  <wsdl>${basedir}/src/main/wsdl/CardOrderService.wsdl</wsdl>
-                  <extraargs>
-                    <extraarg>-xjc-b,${basedir}/src/main/resources/fixserialize.xjb</extraarg>
-                  </extraargs>
-                </wsdlOption>
-                <wsdlOption>
                   <wsdl>${basedir}/src/main/wsdl/EntitlementService.wsdl</wsdl>
                   <extraargs>
                     <extraarg>-xjc-b,${basedir}/src/main/resources/fixserialize.xjb</extraarg>
