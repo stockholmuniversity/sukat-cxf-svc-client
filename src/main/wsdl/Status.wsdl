@@ -53,7 +53,7 @@
   </wsdl:binding>
   <wsdl:service name="StatusService">
     <wsdl:port binding="tns:StatusServiceSoapBinding" name="StatusPort">
-      <soap:address location="http://localhost/Status"/>
+      <soap:address location="http://127.0.0.1:8080/Status"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

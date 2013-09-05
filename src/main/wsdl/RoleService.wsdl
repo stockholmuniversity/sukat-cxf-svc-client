@@ -1,0 +1,93 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="RoleServiceImplService" targetNamespace="http://svc.it.su.se/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://svc.it.su.se/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+<xs:schema elementFormDefault="unqualified" targetNamespace="http://svc.it.su.se/" version="1.0" xmlns:tns="http://svc.it.su.se/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="addUidToRoles" type="tns:addUidToRoles"/>
+<xs:element name="addUidToRolesResponse" type="tns:addUidToRolesResponse"/>
+<xs:element name="removeUidFromRoles" type="tns:removeUidFromRoles"/>
+<xs:element name="removeUidFromRolesResponse" type="tns:removeUidFromRolesResponse"/>
+<xs:element name="svcAudit" type="tns:svcAudit"/>
+<xs:complexType name="addUidToRoles">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="uid" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="roleDNList" type="xs:string"/>
+      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="svcAudit">
+    <xs:sequence/>
+    <xs:attribute name="uid" type="xs:string"/>
+    <xs:attribute name="ipAddress" type="xs:string"/>
+    <xs:attribute name="client" type="xs:string"/>
+  </xs:complexType>
+<xs:complexType name="addUidToRolesResponse">
+    <xs:sequence/>
+  </xs:complexType>
+<xs:complexType name="removeUidFromRoles">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="uid" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="roleDNList" type="xs:string"/>
+      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
+    </xs:sequence>
+  </xs:complexType>
+<xs:complexType name="removeUidFromRolesResponse">
+    <xs:sequence/>
+  </xs:complexType>
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="removeUidFromRolesResponse">
+    <wsdl:part element="tns:removeUidFromRolesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="removeUidFromRoles">
+    <wsdl:part element="tns:removeUidFromRoles" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addUidToRolesResponse">
+    <wsdl:part element="tns:addUidToRolesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addUidToRoles">
+    <wsdl:part element="tns:addUidToRoles" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="RoleServiceImpl">
+    <wsdl:operation name="addUidToRoles">
+      <wsdl:input message="tns:addUidToRoles" name="addUidToRoles">
+    </wsdl:input>
+      <wsdl:output message="tns:addUidToRolesResponse" name="addUidToRolesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeUidFromRoles">
+      <wsdl:input message="tns:removeUidFromRoles" name="removeUidFromRoles">
+    </wsdl:input>
+      <wsdl:output message="tns:removeUidFromRolesResponse" name="removeUidFromRolesResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="RoleServiceImplServiceSoapBinding" type="tns:RoleServiceImpl">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="addUidToRoles">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addUidToRoles">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addUidToRolesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="removeUidFromRoles">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="removeUidFromRoles">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="removeUidFromRolesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="RoleServiceImplService">
+    <wsdl:port binding="tns:RoleServiceImplServiceSoapBinding" name="RoleServiceImplPort">
+      <soap:address location="http://127.0.0.1:8080/RoleService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
