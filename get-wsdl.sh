@@ -3,7 +3,7 @@
 
 SERVERURL=`echo "$1" | sed -e "s/\/*$//"`
 if [ -z ${SERVERURL}  ]
-     then 
+     then
      echo "usage: $0 <serverurl>"
      echo "example: $0 https://myserver.su.se/"
      exit 10
