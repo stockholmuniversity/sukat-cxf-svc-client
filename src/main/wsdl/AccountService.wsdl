@@ -39,7 +39,7 @@
       <xs:element maxOccurs="unbounded" minOccurs="0" name="roomNumber" type="xs:string"/>
       <xs:element maxOccurs="unbounded" minOccurs="0" name="telephoneNumber" type="xs:string"/>
       <xs:element maxOccurs="unbounded" minOccurs="0" name="sukatPULAttributes" type="xs:string"/>
-      <xs:element maxOccurs="unbounded" minOccurs="0" name="mail" type="xs:string"/>
+      <xs:element minOccurs="0" name="mail" type="xs:string"/>
       <xs:element maxOccurs="unbounded" minOccurs="0" name="mailLocalAddress" type="xs:string"/>
       <xs:element maxOccurs="unbounded" minOccurs="0" name="eduPersonOrgUnitDN" type="xs:string"/>
       <xs:element maxOccurs="unbounded" minOccurs="0" name="homePostalAddress" type="xs:string"/>
@@ -417,7 +417,7 @@
   </wsdl:binding>
   <wsdl:service name="AccountServiceImplService">
     <wsdl:port binding="tns:AccountServiceImplServiceSoapBinding" name="AccountServiceImplPort">
-      <soap:address location="http://localhost/AccountService"/>
+      <soap:address location="http://127.0.0.1:8080/AccountService"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
