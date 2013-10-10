@@ -1,44 +1,89 @@
-<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="CardAdminServiceImplService" targetNamespace="http://svc.it.su.se/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://svc.it.su.se/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://svc.it.su.se/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="CardAdminServiceImplService" targetNamespace="http://svc.it.su.se/">
   <wsdl:types>
-<xs:schema elementFormDefault="unqualified" targetNamespace="http://svc.it.su.se/" version="1.0" xmlns:tns="http://svc.it.su.se/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-<xs:element name="revokeCard" type="tns:revokeCard"/>
-<xs:element name="revokeCardResponse" type="tns:revokeCardResponse"/>
-<xs:element name="setCardPIN" type="tns:setCardPIN"/>
-<xs:element name="setCardPINResponse" type="tns:setCardPINResponse"/>
-<xs:element name="svcAudit" type="tns:svcAudit"/>
-<xs:complexType name="revokeCard">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://svc.it.su.se/" elementFormDefault="unqualified" targetNamespace="http://svc.it.su.se/" version="1.0">
+
+  <xs:element name="getSuCardOrderQuery" type="tns:getSuCardOrderQuery"/>
+
+  <xs:element name="getSuCardOrderQueryResponse" type="tns:getSuCardOrderQueryResponse"/>
+
+  <xs:element name="revokeCard" type="tns:revokeCard"/>
+
+  <xs:element name="revokeCardResponse" type="tns:revokeCardResponse"/>
+
+  <xs:element name="setCardPIN" type="tns:setCardPIN"/>
+
+  <xs:element name="setCardPINResponse" type="tns:setCardPINResponse"/>
+
+  <xs:element name="setSuCardOrderQuery" type="tns:setSuCardOrderQuery"/>
+
+  <xs:element name="setSuCardOrderQueryResponse" type="tns:setSuCardOrderQueryResponse"/>
+
+  <xs:complexType name="revokeCard">
     <xs:sequence>
       <xs:element minOccurs="0" name="suCardUUID" type="xs:string"/>
-      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
+      <xs:element minOccurs="0" name="revokerUid" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
-<xs:complexType name="svcAudit">
-    <xs:sequence/>
-    <xs:attribute name="uid" type="xs:string"/>
-    <xs:attribute name="ipAddress" type="xs:string"/>
-    <xs:attribute name="client" type="xs:string"/>
-  </xs:complexType>
-<xs:complexType name="revokeCardResponse">
+
+  <xs:complexType name="revokeCardResponse">
     <xs:sequence/>
   </xs:complexType>
-<xs:complexType name="setCardPIN">
+
+  <xs:complexType name="setSuCardOrderQuery">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:anyType"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="setSuCardOrderQueryResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="setCardPIN">
     <xs:sequence>
       <xs:element minOccurs="0" name="suCardUUID" type="xs:string"/>
       <xs:element minOccurs="0" name="pin" type="xs:string"/>
-      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
     </xs:sequence>
   </xs:complexType>
-<xs:complexType name="setCardPINResponse">
+
+  <xs:complexType name="setCardPINResponse">
     <xs:sequence/>
   </xs:complexType>
+
+  <xs:complexType name="getSuCardOrderQuery">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="getSuCardOrderQueryResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:anyType"/>
+    </xs:sequence>
+  </xs:complexType>
+
 </xs:schema>
   </wsdl:types>
+  <wsdl:message name="getSuCardOrderQuery">
+    <wsdl:part element="tns:getSuCardOrderQuery" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="setCardPINResponse">
     <wsdl:part element="tns:setCardPINResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="setSuCardOrderQueryResponse">
+    <wsdl:part element="tns:setSuCardOrderQueryResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="setSuCardOrderQuery">
+    <wsdl:part element="tns:setSuCardOrderQuery" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="revokeCard">
     <wsdl:part element="tns:revokeCard" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getSuCardOrderQueryResponse">
+    <wsdl:part element="tns:getSuCardOrderQueryResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="revokeCardResponse">
@@ -56,10 +101,22 @@
       <wsdl:output message="tns:revokeCardResponse" name="revokeCardResponse">
     </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="setSuCardOrderQuery">
+      <wsdl:input message="tns:setSuCardOrderQuery" name="setSuCardOrderQuery">
+    </wsdl:input>
+      <wsdl:output message="tns:setSuCardOrderQueryResponse" name="setSuCardOrderQueryResponse">
+    </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="setCardPIN">
       <wsdl:input message="tns:setCardPIN" name="setCardPIN">
     </wsdl:input>
       <wsdl:output message="tns:setCardPINResponse" name="setCardPINResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSuCardOrderQuery">
+      <wsdl:input message="tns:getSuCardOrderQuery" name="getSuCardOrderQuery">
+    </wsdl:input>
+      <wsdl:output message="tns:getSuCardOrderQueryResponse" name="getSuCardOrderQueryResponse">
     </wsdl:output>
     </wsdl:operation>
   </wsdl:portType>
@@ -71,6 +128,24 @@
         <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="revokeCardResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setSuCardOrderQuery">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="setSuCardOrderQuery">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="setSuCardOrderQueryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getSuCardOrderQuery">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getSuCardOrderQuery">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getSuCardOrderQueryResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
