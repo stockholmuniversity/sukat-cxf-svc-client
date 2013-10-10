@@ -1,68 +1,77 @@
-<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="WebServiceAdminImplService" targetNamespace="http://svc.it.su.se/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://svc.it.su.se/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://svc.it.su.se/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="WebServiceAdminImplService" targetNamespace="http://svc.it.su.se/">
   <wsdl:types>
-<xs:schema elementFormDefault="unqualified" targetNamespace="http://svc.it.su.se/" version="1.0" xmlns:tns="http://svc.it.su.se/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-<xs:element name="setApplicationLogLevel" type="tns:setApplicationLogLevel"/>
-<xs:element name="setApplicationLogLevelResponse" type="tns:setApplicationLogLevelResponse"/>
-<xs:element name="setContainerLogLevel" type="tns:setContainerLogLevel"/>
-<xs:element name="setContainerLogLevelResponse" type="tns:setContainerLogLevelResponse"/>
-<xs:element name="setCxfLogLevel" type="tns:setCxfLogLevel"/>
-<xs:element name="setCxfLogLevelResponse" type="tns:setCxfLogLevelResponse"/>
-<xs:element name="setRootLogLevel" type="tns:setRootLogLevel"/>
-<xs:element name="setRootLogLevelResponse" type="tns:setRootLogLevelResponse"/>
-<xs:element name="setSpringLogLevel" type="tns:setSpringLogLevel"/>
-<xs:element name="setSpringLogLevelResponse" type="tns:setSpringLogLevelResponse"/>
-<xs:element name="svcAudit" type="tns:svcAudit"/>
-<xs:complexType name="setContainerLogLevel">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://svc.it.su.se/" elementFormDefault="unqualified" targetNamespace="http://svc.it.su.se/" version="1.0">
+
+  <xs:element name="setApplicationLogLevel" type="tns:setApplicationLogLevel"/>
+
+  <xs:element name="setApplicationLogLevelResponse" type="tns:setApplicationLogLevelResponse"/>
+
+  <xs:element name="setContainerLogLevel" type="tns:setContainerLogLevel"/>
+
+  <xs:element name="setContainerLogLevelResponse" type="tns:setContainerLogLevelResponse"/>
+
+  <xs:element name="setCxfLogLevel" type="tns:setCxfLogLevel"/>
+
+  <xs:element name="setCxfLogLevelResponse" type="tns:setCxfLogLevelResponse"/>
+
+  <xs:element name="setRootLogLevel" type="tns:setRootLogLevel"/>
+
+  <xs:element name="setRootLogLevelResponse" type="tns:setRootLogLevelResponse"/>
+
+  <xs:element name="setSpringLogLevel" type="tns:setSpringLogLevel"/>
+
+  <xs:element name="setSpringLogLevelResponse" type="tns:setSpringLogLevelResponse"/>
+
+  <xs:complexType name="setContainerLogLevel">
     <xs:sequence>
       <xs:element minOccurs="0" name="level" type="xs:string"/>
-      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
     </xs:sequence>
   </xs:complexType>
-<xs:complexType name="svcAudit">
-    <xs:sequence/>
-    <xs:attribute name="uid" type="xs:string"/>
-    <xs:attribute name="ipAddress" type="xs:string"/>
-    <xs:attribute name="client" type="xs:string"/>
-  </xs:complexType>
-<xs:complexType name="setContainerLogLevelResponse">
+
+  <xs:complexType name="setContainerLogLevelResponse">
     <xs:sequence/>
   </xs:complexType>
-<xs:complexType name="setRootLogLevel">
+
+  <xs:complexType name="setRootLogLevel">
     <xs:sequence>
       <xs:element minOccurs="0" name="level" type="xs:string"/>
-      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
     </xs:sequence>
   </xs:complexType>
-<xs:complexType name="setRootLogLevelResponse">
+
+  <xs:complexType name="setRootLogLevelResponse">
     <xs:sequence/>
   </xs:complexType>
-<xs:complexType name="setCxfLogLevel">
+
+  <xs:complexType name="setCxfLogLevel">
     <xs:sequence>
       <xs:element minOccurs="0" name="level" type="xs:string"/>
-      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
     </xs:sequence>
   </xs:complexType>
-<xs:complexType name="setCxfLogLevelResponse">
+
+  <xs:complexType name="setCxfLogLevelResponse">
     <xs:sequence/>
   </xs:complexType>
-<xs:complexType name="setApplicationLogLevel">
+
+  <xs:complexType name="setApplicationLogLevel">
     <xs:sequence>
       <xs:element minOccurs="0" name="level" type="xs:string"/>
-      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
     </xs:sequence>
   </xs:complexType>
-<xs:complexType name="setApplicationLogLevelResponse">
+
+  <xs:complexType name="setApplicationLogLevelResponse">
     <xs:sequence/>
   </xs:complexType>
-<xs:complexType name="setSpringLogLevel">
+
+  <xs:complexType name="setSpringLogLevel">
     <xs:sequence>
       <xs:element minOccurs="0" name="level" type="xs:string"/>
-      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
     </xs:sequence>
   </xs:complexType>
-<xs:complexType name="setSpringLogLevelResponse">
+
+  <xs:complexType name="setSpringLogLevelResponse">
     <xs:sequence/>
   </xs:complexType>
+
 </xs:schema>
   </wsdl:types>
   <wsdl:message name="setApplicationLogLevel">

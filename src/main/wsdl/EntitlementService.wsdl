@@ -1,37 +1,37 @@
-<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="EntitlementServiceImplService" targetNamespace="http://svc.it.su.se/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://svc.it.su.se/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://svc.it.su.se/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="EntitlementServiceImplService" targetNamespace="http://svc.it.su.se/">
   <wsdl:types>
-<xs:schema elementFormDefault="unqualified" targetNamespace="http://svc.it.su.se/" version="1.0" xmlns:tns="http://svc.it.su.se/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-<xs:element name="addEntitlement" type="tns:addEntitlement"/>
-<xs:element name="addEntitlementResponse" type="tns:addEntitlementResponse"/>
-<xs:element name="removeEntitlement" type="tns:removeEntitlement"/>
-<xs:element name="removeEntitlementResponse" type="tns:removeEntitlementResponse"/>
-<xs:element name="svcAudit" type="tns:svcAudit"/>
-<xs:complexType name="removeEntitlement">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://svc.it.su.se/" elementFormDefault="unqualified" targetNamespace="http://svc.it.su.se/" version="1.0">
+
+  <xs:element name="addEntitlement" type="tns:addEntitlement"/>
+
+  <xs:element name="addEntitlementResponse" type="tns:addEntitlementResponse"/>
+
+  <xs:element name="removeEntitlement" type="tns:removeEntitlement"/>
+
+  <xs:element name="removeEntitlementResponse" type="tns:removeEntitlementResponse"/>
+
+  <xs:complexType name="removeEntitlement">
     <xs:sequence>
       <xs:element minOccurs="0" name="uid" type="xs:string"/>
       <xs:element minOccurs="0" name="entitlement" type="xs:string"/>
-      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
     </xs:sequence>
   </xs:complexType>
-<xs:complexType name="svcAudit">
-    <xs:sequence/>
-    <xs:attribute name="uid" type="xs:string"/>
-    <xs:attribute name="ipAddress" type="xs:string"/>
-    <xs:attribute name="client" type="xs:string"/>
-  </xs:complexType>
-<xs:complexType name="removeEntitlementResponse">
+
+  <xs:complexType name="removeEntitlementResponse">
     <xs:sequence/>
   </xs:complexType>
-<xs:complexType name="addEntitlement">
+
+  <xs:complexType name="addEntitlement">
     <xs:sequence>
       <xs:element minOccurs="0" name="uid" type="xs:string"/>
       <xs:element minOccurs="0" name="entitlement" type="xs:string"/>
-      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
     </xs:sequence>
   </xs:complexType>
-<xs:complexType name="addEntitlementResponse">
+
+  <xs:complexType name="addEntitlementResponse">
     <xs:sequence/>
   </xs:complexType>
+
 </xs:schema>
   </wsdl:types>
   <wsdl:message name="addEntitlementResponse">
@@ -87,7 +87,7 @@
   </wsdl:binding>
   <wsdl:service name="EntitlementServiceImplService">
     <wsdl:port binding="tns:EntitlementServiceImplServiceSoapBinding" name="EntitlementServiceImplPort">
-      <soap:address location="http://127.0.0.1:8080/EntitlementService"/>
+      <soap:address location="http://melkor.it.su.se:9090/EntitlementService"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>

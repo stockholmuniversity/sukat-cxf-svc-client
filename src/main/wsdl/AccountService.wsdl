@@ -1,37 +1,101 @@
-<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="AccountServiceImplService" targetNamespace="http://svc.it.su.se/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://svc.it.su.se/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://svc.it.su.se/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="AccountServiceImplService" targetNamespace="http://svc.it.su.se/">
   <wsdl:types>
-<xs:schema elementFormDefault="unqualified" targetNamespace="http://svc.it.su.se/" version="1.0" xmlns:tns="http://svc.it.su.se/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-<xs:element name="activateSuPerson" type="tns:activateSuPerson"/>
-<xs:element name="activateSuPersonResponse" type="tns:activateSuPersonResponse"/>
-<xs:element name="createSuPerson" type="tns:createSuPerson"/>
-<xs:element name="createSuPersonResponse" type="tns:createSuPersonResponse"/>
-<xs:element name="findAllSuPersonsBySocialSecurityNumber" type="tns:findAllSuPersonsBySocialSecurityNumber"/>
-<xs:element name="findAllSuPersonsBySocialSecurityNumberResponse" type="tns:findAllSuPersonsBySocialSecurityNumberResponse"/>
-<xs:element name="findSuPersonByUid" type="tns:findSuPersonByUid"/>
-<xs:element name="findSuPersonByUidResponse" type="tns:findSuPersonByUidResponse"/>
-<xs:element name="getMailRoutingAddress" type="tns:getMailRoutingAddress"/>
-<xs:element name="getMailRoutingAddressResponse" type="tns:getMailRoutingAddressResponse"/>
-<xs:element name="resetPassword" type="tns:resetPassword"/>
-<xs:element name="resetPasswordResponse" type="tns:resetPasswordResponse"/>
-<xs:element name="setMailRoutingAddress" type="tns:setMailRoutingAddress"/>
-<xs:element name="setMailRoutingAddressResponse" type="tns:setMailRoutingAddressResponse"/>
-<xs:element name="svcAudit" type="tns:svcAudit"/>
-<xs:element name="svcSuPersonVO" type="tns:svcSuPersonVO"/>
-<xs:element name="svcUidPwd" type="tns:svcUidPwd"/>
-<xs:element name="terminateSuPerson" type="tns:terminateSuPerson"/>
-<xs:element name="terminateSuPersonResponse" type="tns:terminateSuPersonResponse"/>
-<xs:element name="updatePrimaryAffiliation" type="tns:updatePrimaryAffiliation"/>
-<xs:element name="updatePrimaryAffiliationResponse" type="tns:updatePrimaryAffiliationResponse"/>
-<xs:element name="updateSuPerson" type="tns:updateSuPerson"/>
-<xs:element name="updateSuPersonResponse" type="tns:updateSuPersonResponse"/>
-<xs:complexType name="updateSuPerson">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://svc.it.su.se/" elementFormDefault="unqualified" targetNamespace="http://svc.it.su.se/" version="1.0">
+
+  <xs:element name="activateSuPerson" type="tns:activateSuPerson"/>
+
+  <xs:element name="activateSuPersonResponse" type="tns:activateSuPersonResponse"/>
+
+  <xs:element name="addMailLocalAddresses" type="tns:addMailLocalAddresses"/>
+
+  <xs:element name="addMailLocalAddressesResponse" type="tns:addMailLocalAddressesResponse"/>
+
+  <xs:element name="createSuPerson" type="tns:createSuPerson"/>
+
+  <xs:element name="createSuPersonResponse" type="tns:createSuPersonResponse"/>
+
+  <xs:element name="findAllSuPersonsBySocialSecurityNumber" type="tns:findAllSuPersonsBySocialSecurityNumber"/>
+
+  <xs:element name="findAllSuPersonsBySocialSecurityNumberResponse" type="tns:findAllSuPersonsBySocialSecurityNumberResponse"/>
+
+  <xs:element name="findSuPersonByUid" type="tns:findSuPersonByUid"/>
+
+  <xs:element name="findSuPersonByUidResponse" type="tns:findSuPersonByUidResponse"/>
+
+  <xs:element name="getConfigManager" type="tns:getConfigManager"/>
+
+  <xs:element name="getConfigManagerResponse" type="tns:getConfigManagerResponse"/>
+
+  <xs:element name="getMailRoutingAddress" type="tns:getMailRoutingAddress"/>
+
+  <xs:element name="getMailRoutingAddressResponse" type="tns:getMailRoutingAddressResponse"/>
+
+  <xs:element name="resetPassword" type="tns:resetPassword"/>
+
+  <xs:element name="resetPasswordResponse" type="tns:resetPasswordResponse"/>
+
+  <xs:element name="setConfigManager" type="tns:setConfigManager"/>
+
+  <xs:element name="setConfigManagerResponse" type="tns:setConfigManagerResponse"/>
+
+  <xs:element name="setMailRoutingAddress" type="tns:setMailRoutingAddress"/>
+
+  <xs:element name="setMailRoutingAddressResponse" type="tns:setMailRoutingAddressResponse"/>
+
+  <xs:element name="svcSuPersonVO" type="tns:svcSuPersonVO"/>
+
+  <xs:element name="svcUidPwd" type="tns:svcUidPwd"/>
+
+  <xs:element name="terminateSuPerson" type="tns:terminateSuPerson"/>
+
+  <xs:element name="terminateSuPersonResponse" type="tns:terminateSuPersonResponse"/>
+
+  <xs:element name="updatePrimaryAffiliation" type="tns:updatePrimaryAffiliation"/>
+
+  <xs:element name="updatePrimaryAffiliationResponse" type="tns:updatePrimaryAffiliationResponse"/>
+
+  <xs:element name="updateSuPerson" type="tns:updateSuPerson"/>
+
+  <xs:element name="updateSuPersonResponse" type="tns:updateSuPersonResponse"/>
+
+  <xs:complexType name="addMailLocalAddresses">
     <xs:sequence>
       <xs:element minOccurs="0" name="uid" type="xs:string"/>
-      <xs:element minOccurs="0" name="person" type="tns:svcSuPersonVO"/>
-      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="mailLocalAddresses" type="xs:string"/>
     </xs:sequence>
   </xs:complexType>
-<xs:complexType name="svcSuPersonVO">
+
+  <xs:complexType name="addMailLocalAddressesResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getMailRoutingAddress">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="uid" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getMailRoutingAddressResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findAllSuPersonsBySocialSecurityNumber">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="socialSecurityNumber" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findAllSuPersonsBySocialSecurityNumberResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:svcSuPersonVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="svcSuPersonVO">
     <xs:sequence>
       <xs:element maxOccurs="unbounded" minOccurs="0" name="eduPersonAffiliation" type="xs:string"/>
       <xs:element maxOccurs="unbounded" minOccurs="0" name="eduPersonEntitlement" type="xs:string"/>
@@ -66,162 +130,151 @@
     <xs:attribute name="sukatComment" type="xs:string"/>
     <xs:attribute name="accountIsActive" type="xs:boolean"/>
   </xs:complexType>
-<xs:complexType name="svcAudit">
-    <xs:sequence/>
-    <xs:attribute name="uid" type="xs:string"/>
-    <xs:attribute name="ipAddress" type="xs:string"/>
-    <xs:attribute name="client" type="xs:string"/>
-  </xs:complexType>
-<xs:complexType name="updateSuPersonResponse">
-    <xs:sequence/>
-  </xs:complexType>
-<xs:complexType name="getMailRoutingAddress">
+
+  <xs:complexType name="updateSuPerson">
     <xs:sequence>
       <xs:element minOccurs="0" name="uid" type="xs:string"/>
-      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
+      <xs:element minOccurs="0" name="person" type="tns:svcSuPersonVO"/>
     </xs:sequence>
   </xs:complexType>
-<xs:complexType name="getMailRoutingAddressResponse">
+
+  <xs:complexType name="updateSuPersonResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="setConfigManager">
     <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="xs:string"/>
+      <xs:element minOccurs="0" name="arg0" type="xs:anyType"/>
     </xs:sequence>
   </xs:complexType>
-<xs:complexType name="findAllSuPersonsBySocialSecurityNumber">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="socialSecurityNumber" type="xs:string"/>
-      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
-    </xs:sequence>
+
+  <xs:complexType name="setConfigManagerResponse">
+    <xs:sequence/>
   </xs:complexType>
-<xs:complexType name="findAllSuPersonsBySocialSecurityNumberResponse">
-    <xs:sequence>
-      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:svcSuPersonVO"/>
-    </xs:sequence>
-  </xs:complexType>
-<xs:complexType name="createSuPerson">
+
+  <xs:complexType name="createSuPerson">
     <xs:sequence>
       <xs:element minOccurs="0" name="uid" type="xs:string"/>
       <xs:element minOccurs="0" name="ssn" type="xs:string"/>
       <xs:element minOccurs="0" name="givenName" type="xs:string"/>
       <xs:element minOccurs="0" name="sn" type="xs:string"/>
-      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
     </xs:sequence>
   </xs:complexType>
-<xs:complexType name="createSuPersonResponse">
+
+  <xs:complexType name="createSuPersonResponse">
     <xs:sequence/>
   </xs:complexType>
-<xs:complexType name="setMailRoutingAddress">
+
+  <xs:complexType name="findSuPersonByUid">
     <xs:sequence>
       <xs:element minOccurs="0" name="uid" type="xs:string"/>
-      <xs:element minOccurs="0" name="mailRoutingAddress" type="xs:string"/>
-      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
     </xs:sequence>
   </xs:complexType>
-<xs:complexType name="setMailRoutingAddressResponse">
-    <xs:sequence/>
-  </xs:complexType>
-<xs:complexType name="resetPassword">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="uid" type="xs:string"/>
-      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
-    </xs:sequence>
-  </xs:complexType>
-<xs:complexType name="resetPasswordResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="xs:string"/>
-    </xs:sequence>
-  </xs:complexType>
-<xs:complexType name="activateSuPerson">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="uid" type="xs:string"/>
-      <xs:element minOccurs="0" name="domain" type="xs:string"/>
-      <xs:element maxOccurs="unbounded" minOccurs="0" name="affiliations" type="xs:string"/>
-      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
-    </xs:sequence>
-  </xs:complexType>
-<xs:complexType name="activateSuPersonResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:svcUidPwd"/>
-    </xs:sequence>
-  </xs:complexType>
-<xs:complexType name="svcUidPwd">
-    <xs:sequence/>
-    <xs:attribute name="uid" type="xs:string"/>
-    <xs:attribute name="password" type="xs:string"/>
-  </xs:complexType>
-<xs:complexType name="updatePrimaryAffiliation">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="uid" type="xs:string"/>
-      <xs:element minOccurs="0" name="affiliation" type="xs:string"/>
-      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
-    </xs:sequence>
-  </xs:complexType>
-<xs:complexType name="updatePrimaryAffiliationResponse">
-    <xs:sequence/>
-  </xs:complexType>
-<xs:complexType name="findSuPersonByUid">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="uid" type="xs:string"/>
-      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
-    </xs:sequence>
-  </xs:complexType>
-<xs:complexType name="findSuPersonByUidResponse">
+
+  <xs:complexType name="findSuPersonByUidResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="return" type="tns:svcSuPersonVO"/>
     </xs:sequence>
   </xs:complexType>
-<xs:complexType name="terminateSuPerson">
+
+  <xs:complexType name="terminateSuPerson">
     <xs:sequence>
       <xs:element minOccurs="0" name="uid" type="xs:string"/>
-      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
     </xs:sequence>
   </xs:complexType>
-<xs:complexType name="terminateSuPersonResponse">
+
+  <xs:complexType name="terminateSuPersonResponse">
     <xs:sequence/>
   </xs:complexType>
+
+  <xs:complexType name="getConfigManager">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="getConfigManagerResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:anyType"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="setMailRoutingAddress">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="uid" type="xs:string"/>
+      <xs:element minOccurs="0" name="mailRoutingAddress" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="setMailRoutingAddressResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="resetPassword">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="uid" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="resetPasswordResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="activateSuPerson">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="uid" type="xs:string"/>
+      <xs:element minOccurs="0" name="domain" type="xs:string"/>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="affiliations" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="activateSuPersonResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:svcUidPwd"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="svcUidPwd">
+    <xs:sequence/>
+    <xs:attribute name="uid" type="xs:string"/>
+    <xs:attribute name="password" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="updatePrimaryAffiliation">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="uid" type="xs:string"/>
+      <xs:element minOccurs="0" name="affiliation" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="updatePrimaryAffiliationResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
 </xs:schema>
   </wsdl:types>
-  <wsdl:message name="updateSuPerson">
-    <wsdl:part element="tns:updateSuPerson" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="resetPasswordResponse">
-    <wsdl:part element="tns:resetPasswordResponse" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="getMailRoutingAddress">
-    <wsdl:part element="tns:getMailRoutingAddress" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
   <wsdl:message name="activateSuPerson">
     <wsdl:part element="tns:activateSuPerson" name="parameters">
     </wsdl:part>
   </wsdl:message>
-  <wsdl:message name="findSuPersonByUidResponse">
-    <wsdl:part element="tns:findSuPersonByUidResponse" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="setMailRoutingAddress">
-    <wsdl:part element="tns:setMailRoutingAddress" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="createSuPersonResponse">
-    <wsdl:part element="tns:createSuPersonResponse" name="parameters">
+  <wsdl:message name="getConfigManagerResponse">
+    <wsdl:part element="tns:getConfigManagerResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="setMailRoutingAddressResponse">
     <wsdl:part element="tns:setMailRoutingAddressResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
-  <wsdl:message name="terminateSuPersonResponse">
-    <wsdl:part element="tns:terminateSuPersonResponse" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
   <wsdl:message name="findAllSuPersonsBySocialSecurityNumber">
     <wsdl:part element="tns:findAllSuPersonsBySocialSecurityNumber" name="parameters">
     </wsdl:part>
   </wsdl:message>
-  <wsdl:message name="terminateSuPerson">
-    <wsdl:part element="tns:terminateSuPerson" name="parameters">
+  <wsdl:message name="terminateSuPersonResponse">
+    <wsdl:part element="tns:terminateSuPersonResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getConfigManager">
+    <wsdl:part element="tns:getConfigManager" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="updatePrimaryAffiliation">
@@ -230,14 +283,6 @@
   </wsdl:message>
   <wsdl:message name="createSuPerson">
     <wsdl:part element="tns:createSuPerson" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="findSuPersonByUid">
-    <wsdl:part element="tns:findSuPersonByUid" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="updatePrimaryAffiliationResponse">
-    <wsdl:part element="tns:updatePrimaryAffiliationResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="activateSuPersonResponse">
@@ -252,6 +297,58 @@
     <wsdl:part element="tns:updateSuPersonResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="addMailLocalAddresses">
+    <wsdl:part element="tns:addMailLocalAddresses" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateSuPerson">
+    <wsdl:part element="tns:updateSuPerson" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="resetPasswordResponse">
+    <wsdl:part element="tns:resetPasswordResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getMailRoutingAddress">
+    <wsdl:part element="tns:getMailRoutingAddress" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="setConfigManagerResponse">
+    <wsdl:part element="tns:setConfigManagerResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findSuPersonByUidResponse">
+    <wsdl:part element="tns:findSuPersonByUidResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="setMailRoutingAddress">
+    <wsdl:part element="tns:setMailRoutingAddress" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createSuPersonResponse">
+    <wsdl:part element="tns:createSuPersonResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="setConfigManager">
+    <wsdl:part element="tns:setConfigManager" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="terminateSuPerson">
+    <wsdl:part element="tns:terminateSuPerson" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updatePrimaryAffiliationResponse">
+    <wsdl:part element="tns:updatePrimaryAffiliationResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findSuPersonByUid">
+    <wsdl:part element="tns:findSuPersonByUid" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="addMailLocalAddressesResponse">
+    <wsdl:part element="tns:addMailLocalAddressesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="resetPassword">
     <wsdl:part element="tns:resetPassword" name="parameters">
     </wsdl:part>
@@ -261,10 +358,10 @@
     </wsdl:part>
   </wsdl:message>
   <wsdl:portType name="AccountServiceImpl">
-    <wsdl:operation name="updateSuPerson">
-      <wsdl:input message="tns:updateSuPerson" name="updateSuPerson">
+    <wsdl:operation name="addMailLocalAddresses">
+      <wsdl:input message="tns:addMailLocalAddresses" name="addMailLocalAddresses">
     </wsdl:input>
-      <wsdl:output message="tns:updateSuPersonResponse" name="updateSuPersonResponse">
+      <wsdl:output message="tns:addMailLocalAddressesResponse" name="addMailLocalAddressesResponse">
     </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="getMailRoutingAddress">
@@ -279,10 +376,40 @@
       <wsdl:output message="tns:findAllSuPersonsBySocialSecurityNumberResponse" name="findAllSuPersonsBySocialSecurityNumberResponse">
     </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="updateSuPerson">
+      <wsdl:input message="tns:updateSuPerson" name="updateSuPerson">
+    </wsdl:input>
+      <wsdl:output message="tns:updateSuPersonResponse" name="updateSuPersonResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setConfigManager">
+      <wsdl:input message="tns:setConfigManager" name="setConfigManager">
+    </wsdl:input>
+      <wsdl:output message="tns:setConfigManagerResponse" name="setConfigManagerResponse">
+    </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="createSuPerson">
       <wsdl:input message="tns:createSuPerson" name="createSuPerson">
     </wsdl:input>
       <wsdl:output message="tns:createSuPersonResponse" name="createSuPersonResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findSuPersonByUid">
+      <wsdl:input message="tns:findSuPersonByUid" name="findSuPersonByUid">
+    </wsdl:input>
+      <wsdl:output message="tns:findSuPersonByUidResponse" name="findSuPersonByUidResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="terminateSuPerson">
+      <wsdl:input message="tns:terminateSuPerson" name="terminateSuPerson">
+    </wsdl:input>
+      <wsdl:output message="tns:terminateSuPersonResponse" name="terminateSuPersonResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getConfigManager">
+      <wsdl:input message="tns:getConfigManager" name="getConfigManager">
+    </wsdl:input>
+      <wsdl:output message="tns:getConfigManagerResponse" name="getConfigManagerResponse">
     </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="setMailRoutingAddress">
@@ -309,27 +436,42 @@
       <wsdl:output message="tns:updatePrimaryAffiliationResponse" name="updatePrimaryAffiliationResponse">
     </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="findSuPersonByUid">
-      <wsdl:input message="tns:findSuPersonByUid" name="findSuPersonByUid">
-    </wsdl:input>
-      <wsdl:output message="tns:findSuPersonByUidResponse" name="findSuPersonByUidResponse">
-    </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="terminateSuPerson">
-      <wsdl:input message="tns:terminateSuPerson" name="terminateSuPerson">
-    </wsdl:input>
-      <wsdl:output message="tns:terminateSuPersonResponse" name="terminateSuPersonResponse">
-    </wsdl:output>
-    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="AccountServiceImplServiceSoapBinding" type="tns:AccountServiceImpl">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="addMailLocalAddresses">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="addMailLocalAddresses">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="addMailLocalAddressesResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getMailRoutingAddress">
       <soap:operation soapAction="" style="document"/>
       <wsdl:input name="getMailRoutingAddress">
         <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="getMailRoutingAddressResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findAllSuPersonsBySocialSecurityNumber">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findAllSuPersonsBySocialSecurityNumber">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findAllSuPersonsBySocialSecurityNumberResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setConfigManager">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="setConfigManager">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="setConfigManagerResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
@@ -351,12 +493,30 @@
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="findAllSuPersonsBySocialSecurityNumber">
+    <wsdl:operation name="findSuPersonByUid">
       <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="findAllSuPersonsBySocialSecurityNumber">
+      <wsdl:input name="findSuPersonByUid">
         <soap:body use="literal"/>
       </wsdl:input>
-      <wsdl:output name="findAllSuPersonsBySocialSecurityNumberResponse">
+      <wsdl:output name="findSuPersonByUidResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getConfigManager">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getConfigManager">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getConfigManagerResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="terminateSuPerson">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="terminateSuPerson">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="terminateSuPersonResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
@@ -387,30 +547,12 @@
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="findSuPersonByUid">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="findSuPersonByUid">
-        <soap:body use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="findSuPersonByUidResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="updatePrimaryAffiliation">
       <soap:operation soapAction="" style="document"/>
       <wsdl:input name="updatePrimaryAffiliation">
         <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="updatePrimaryAffiliationResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="terminateSuPerson">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="terminateSuPerson">
-        <soap:body use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="terminateSuPersonResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>

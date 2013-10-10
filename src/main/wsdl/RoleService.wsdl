@@ -1,37 +1,37 @@
-<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="RoleServiceImplService" targetNamespace="http://svc.it.su.se/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://svc.it.su.se/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://svc.it.su.se/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="RoleServiceImplService" targetNamespace="http://svc.it.su.se/">
   <wsdl:types>
-<xs:schema elementFormDefault="unqualified" targetNamespace="http://svc.it.su.se/" version="1.0" xmlns:tns="http://svc.it.su.se/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-<xs:element name="addUidToRoles" type="tns:addUidToRoles"/>
-<xs:element name="addUidToRolesResponse" type="tns:addUidToRolesResponse"/>
-<xs:element name="removeUidFromRoles" type="tns:removeUidFromRoles"/>
-<xs:element name="removeUidFromRolesResponse" type="tns:removeUidFromRolesResponse"/>
-<xs:element name="svcAudit" type="tns:svcAudit"/>
-<xs:complexType name="addUidToRoles">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://svc.it.su.se/" elementFormDefault="unqualified" targetNamespace="http://svc.it.su.se/" version="1.0">
+
+  <xs:element name="addUidToRoles" type="tns:addUidToRoles"/>
+
+  <xs:element name="addUidToRolesResponse" type="tns:addUidToRolesResponse"/>
+
+  <xs:element name="removeUidFromRoles" type="tns:removeUidFromRoles"/>
+
+  <xs:element name="removeUidFromRolesResponse" type="tns:removeUidFromRolesResponse"/>
+
+  <xs:complexType name="addUidToRoles">
     <xs:sequence>
       <xs:element minOccurs="0" name="uid" type="xs:string"/>
       <xs:element maxOccurs="unbounded" minOccurs="0" name="roleDNList" type="xs:string"/>
-      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
     </xs:sequence>
   </xs:complexType>
-<xs:complexType name="svcAudit">
-    <xs:sequence/>
-    <xs:attribute name="uid" type="xs:string"/>
-    <xs:attribute name="ipAddress" type="xs:string"/>
-    <xs:attribute name="client" type="xs:string"/>
-  </xs:complexType>
-<xs:complexType name="addUidToRolesResponse">
+
+  <xs:complexType name="addUidToRolesResponse">
     <xs:sequence/>
   </xs:complexType>
-<xs:complexType name="removeUidFromRoles">
+
+  <xs:complexType name="removeUidFromRoles">
     <xs:sequence>
       <xs:element minOccurs="0" name="uid" type="xs:string"/>
       <xs:element maxOccurs="unbounded" minOccurs="0" name="roleDNList" type="xs:string"/>
-      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
     </xs:sequence>
   </xs:complexType>
-<xs:complexType name="removeUidFromRolesResponse">
+
+  <xs:complexType name="removeUidFromRolesResponse">
     <xs:sequence/>
   </xs:complexType>
+
 </xs:schema>
   </wsdl:types>
   <wsdl:message name="removeUidFromRolesResponse">
