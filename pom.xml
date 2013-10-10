@@ -23,10 +23,14 @@
       <timezone>CET</timezone>
     </developer>
   </developers>
+
   <scm>
-    <connection>scm:git:ssh://git.it.su.se/git/sukat-cxf-svc-client</connection>
-    <developerConnection>scm:git:ssh://git.it.su.se/git/sukat-cxf-svc-client</developerConnection>
+    <connection>scm:git:git@github.com:stockholmuniversity/sukat-cxf-svc-client.git</connection>
+    <url>scm:git:git@github.com:stockholmuniversity/sukat-cxf-svc-client.git</url>
+    <developerConnection>scm:git:git@github.com:stockholmuniversity/sukat-cxf-svc-client.git</developerConnection>
+    <tag>HEAD</tag>
   </scm>
+
   <organization>
     <name>Stockholm university</name>
     <url>http://www.su.se</url>
@@ -61,6 +65,14 @@
   </dependencies>
   <build>
     <defaultGoal>install</defaultGoal>
+    <extensions>
+      <extension>
+        <groupId>org.apache.maven.wagon</groupId>
+        <artifactId>wagon-ssh-external</artifactId>
+        <version>2.4</version>
+      </extension>
+    </extensions>
+
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -71,12 +83,16 @@
           <target>1.6</target>
         </configuration>
       </plugin>
+
       <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-release-plugin</artifactId>
+        <version>2.4.1</version>
         <configuration>
-          <tagBase>svn+ssh://svn.it.su.se/svn/su-lpw-client/tags</tagBase>
+          <tagNameFormat>@{project.version}</tagNameFormat>
         </configuration>
       </plugin>
+
       <plugin>
         <groupId>org.apache.cxf</groupId>
         <artifactId>cxf-codegen-plugin</artifactId>
@@ -154,23 +170,23 @@
       </plugin>
     </plugins>
   </build>
+
   <repositories>
     <repository>
       <id>su-mvn</id>
       <name>SU Maven2</name>
       <url>http://maven.it.su.se/it.su.se/maven2</url>
     </repository>
-    <repository>
-      <id>su-maven</id>
-      <name>SU Maven</name>
-      <url>http://maven.it.su.se/it.su.se/maven</url>
-      <layout>legacy</layout>
-    </repository>
   </repositories>
+
   <distributionManagement>
     <repository>
       <id>ssh-repository</id>
       <url>scpexe://svn.it.su.se/afs/su.se/services/maven/it.su.se/maven2</url>
     </repository>
   </distributionManagement>
+
+  <prerequisites>
+    <maven>3.0.0</maven>
+  </prerequisites>
 </project>
