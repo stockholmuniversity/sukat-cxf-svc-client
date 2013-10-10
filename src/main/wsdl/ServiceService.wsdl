@@ -1,39 +1,48 @@
-<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions name="ServiceServiceImplService" targetNamespace="http://svc.it.su.se/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://svc.it.su.se/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://svc.it.su.se/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="ServiceServiceImplService" targetNamespace="http://svc.it.su.se/">
   <wsdl:types>
-<xs:schema elementFormDefault="unqualified" targetNamespace="http://svc.it.su.se/" version="1.0" xmlns:tns="http://svc.it.su.se/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-<xs:element name="blockService" type="tns:blockService"/>
-<xs:element name="blockServiceResponse" type="tns:blockServiceResponse"/>
-<xs:element name="enableServiceFully" type="tns:enableServiceFully"/>
-<xs:element name="enableServiceFullyResponse" type="tns:enableServiceFullyResponse"/>
-<xs:element name="getServiceTemplate" type="tns:getServiceTemplate"/>
-<xs:element name="getServiceTemplateResponse" type="tns:getServiceTemplateResponse"/>
-<xs:element name="getServiceTemplates" type="tns:getServiceTemplates"/>
-<xs:element name="getServiceTemplatesResponse" type="tns:getServiceTemplatesResponse"/>
-<xs:element name="getServices" type="tns:getServices"/>
-<xs:element name="getServicesResponse" type="tns:getServicesResponse"/>
-<xs:element name="suService" type="tns:suService"/>
-<xs:element name="suServiceDescription" type="tns:suServiceDescription"/>
-<xs:element name="svcAudit" type="tns:svcAudit"/>
-<xs:element name="unblockService" type="tns:unblockService"/>
-<xs:element name="unblockServiceResponse" type="tns:unblockServiceResponse"/>
-<xs:complexType name="getServices">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://svc.it.su.se/" elementFormDefault="unqualified" targetNamespace="http://svc.it.su.se/" version="1.0">
+
+  <xs:element name="blockService" type="tns:blockService"/>
+
+  <xs:element name="blockServiceResponse" type="tns:blockServiceResponse"/>
+
+  <xs:element name="enableServiceFully" type="tns:enableServiceFully"/>
+
+  <xs:element name="enableServiceFullyResponse" type="tns:enableServiceFullyResponse"/>
+
+  <xs:element name="getServiceTemplate" type="tns:getServiceTemplate"/>
+
+  <xs:element name="getServiceTemplateResponse" type="tns:getServiceTemplateResponse"/>
+
+  <xs:element name="getServiceTemplates" type="tns:getServiceTemplates"/>
+
+  <xs:element name="getServiceTemplatesResponse" type="tns:getServiceTemplatesResponse"/>
+
+  <xs:element name="getServices" type="tns:getServices"/>
+
+  <xs:element name="getServicesResponse" type="tns:getServicesResponse"/>
+
+  <xs:element name="suService" type="tns:suService"/>
+
+  <xs:element name="suServiceDescription" type="tns:suServiceDescription"/>
+
+  <xs:element name="unblockService" type="tns:unblockService"/>
+
+  <xs:element name="unblockServiceResponse" type="tns:unblockServiceResponse"/>
+
+  <xs:complexType name="getServices">
     <xs:sequence>
       <xs:element minOccurs="0" name="uid" type="xs:string"/>
-      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
     </xs:sequence>
   </xs:complexType>
-<xs:complexType name="svcAudit">
-    <xs:sequence/>
-    <xs:attribute name="uid" type="xs:string"/>
-    <xs:attribute name="ipAddress" type="xs:string"/>
-    <xs:attribute name="client" type="xs:string"/>
-  </xs:complexType>
-<xs:complexType name="getServicesResponse">
+
+  <xs:complexType name="getServicesResponse">
     <xs:sequence>
       <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:suService"/>
     </xs:sequence>
   </xs:complexType>
-<xs:complexType name="suService">
+
+  <xs:complexType name="suService">
     <xs:sequence>
       <xs:element maxOccurs="unbounded" minOccurs="0" name="objectClass" type="xs:string"/>
     </xs:sequence>
@@ -44,17 +53,18 @@
     <xs:attribute name="suServiceStartTime" type="xs:string"/>
     <xs:attribute name="roleOccupant" type="xs:string"/>
   </xs:complexType>
-<xs:complexType name="getServiceTemplates">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
-    </xs:sequence>
+
+  <xs:complexType name="getServiceTemplates">
+    <xs:sequence/>
   </xs:complexType>
-<xs:complexType name="getServiceTemplatesResponse">
+
+  <xs:complexType name="getServiceTemplatesResponse">
     <xs:sequence>
       <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:suServiceDescription"/>
     </xs:sequence>
   </xs:complexType>
-<xs:complexType name="suServiceDescription">
+
+  <xs:complexType name="suServiceDescription">
     <xs:sequence/>
     <xs:attribute name="cn" type="xs:string"/>
     <xs:attribute name="suServiceType" type="xs:string"/>
@@ -63,51 +73,56 @@
     <xs:attribute name="description" type="xs:string"/>
     <xs:attribute name="displayName" type="xs:string"/>
   </xs:complexType>
-<xs:complexType name="blockService">
+
+  <xs:complexType name="blockService">
     <xs:sequence>
       <xs:element minOccurs="0" name="uid" type="xs:string"/>
       <xs:element minOccurs="0" name="serviceType" type="xs:string"/>
-      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
     </xs:sequence>
   </xs:complexType>
-<xs:complexType name="blockServiceResponse">
+
+  <xs:complexType name="blockServiceResponse">
     <xs:sequence/>
   </xs:complexType>
-<xs:complexType name="enableServiceFully">
+
+  <xs:complexType name="enableServiceFully">
     <xs:sequence>
       <xs:element minOccurs="0" name="uid" type="xs:string"/>
       <xs:element minOccurs="0" name="serviceType" type="xs:string"/>
       <xs:element minOccurs="0" name="qualifier" type="xs:string"/>
       <xs:element minOccurs="0" name="description" type="xs:string"/>
-      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
     </xs:sequence>
   </xs:complexType>
-<xs:complexType name="enableServiceFullyResponse">
+
+  <xs:complexType name="enableServiceFullyResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="return" type="tns:suService"/>
     </xs:sequence>
   </xs:complexType>
-<xs:complexType name="getServiceTemplate">
+
+  <xs:complexType name="getServiceTemplate">
     <xs:sequence>
       <xs:element minOccurs="0" name="serviceType" type="xs:string"/>
-      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
     </xs:sequence>
   </xs:complexType>
-<xs:complexType name="getServiceTemplateResponse">
+
+  <xs:complexType name="getServiceTemplateResponse">
     <xs:sequence>
       <xs:element minOccurs="0" name="return" type="tns:suServiceDescription"/>
     </xs:sequence>
   </xs:complexType>
-<xs:complexType name="unblockService">
+
+  <xs:complexType name="unblockService">
     <xs:sequence>
       <xs:element minOccurs="0" name="uid" type="xs:string"/>
       <xs:element minOccurs="0" name="serviceType" type="xs:string"/>
-      <xs:element minOccurs="0" name="audit" type="tns:svcAudit"/>
     </xs:sequence>
   </xs:complexType>
-<xs:complexType name="unblockServiceResponse">
+
+  <xs:complexType name="unblockServiceResponse">
     <xs:sequence/>
   </xs:complexType>
+
 </xs:schema>
   </wsdl:types>
   <wsdl:message name="enableServiceFully">
