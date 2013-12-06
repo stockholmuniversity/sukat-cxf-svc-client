@@ -34,6 +34,10 @@
 
   <xs:element name="resetPasswordResponse" type="tns:resetPasswordResponse"/>
 
+  <xs:element name="scramblePassword" type="tns:scramblePassword"/>
+
+  <xs:element name="scramblePasswordResponse" type="tns:scramblePasswordResponse"/>
+
   <xs:element name="setConfigManager" type="tns:setConfigManager"/>
 
   <xs:element name="setConfigManagerResponse" type="tns:setConfigManagerResponse"/>
@@ -162,6 +166,16 @@
   </xs:complexType>
 
   <xs:complexType name="createSuPersonResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="scramblePassword">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="uid" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="scramblePasswordResponse">
     <xs:sequence/>
   </xs:complexType>
 
@@ -297,6 +311,10 @@
     <wsdl:part element="tns:updateSuPersonResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="scramblePassword">
+    <wsdl:part element="tns:scramblePassword" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="addMailLocalAddresses">
     <wsdl:part element="tns:addMailLocalAddresses" name="parameters">
     </wsdl:part>
@@ -349,6 +367,10 @@
     <wsdl:part element="tns:addMailLocalAddressesResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="scramblePasswordResponse">
+    <wsdl:part element="tns:scramblePasswordResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="resetPassword">
     <wsdl:part element="tns:resetPassword" name="parameters">
     </wsdl:part>
@@ -392,6 +414,12 @@
       <wsdl:input message="tns:createSuPerson" name="createSuPerson">
     </wsdl:input>
       <wsdl:output message="tns:createSuPersonResponse" name="createSuPersonResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="scramblePassword">
+      <wsdl:input message="tns:scramblePassword" name="scramblePassword">
+    </wsdl:input>
+      <wsdl:output message="tns:scramblePasswordResponse" name="scramblePasswordResponse">
     </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="findSuPersonByUid">
@@ -490,6 +518,15 @@
         <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="createSuPersonResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="scramblePassword">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="scramblePassword">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="scramblePasswordResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
