@@ -15,7 +15,7 @@
   <xs:complexType name="getAllCards">
     <xs:sequence>
       <xs:element minOccurs="0" name="uid" type="xs:string"/>
-      <xs:element name="onlyActive" type="xs:boolean"/>
+      <xs:element minOccurs="0" name="onlyActive" type="xs:boolean"/>
     </xs:sequence>
   </xs:complexType>
 
