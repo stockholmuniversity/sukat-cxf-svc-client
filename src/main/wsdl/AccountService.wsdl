@@ -18,6 +18,10 @@
 
   <xs:element name="createSubAccountResponse" type="tns:createSubAccountResponse"/>
 
+  <xs:element name="deleteSubAccount" type="tns:deleteSubAccount"/>
+
+  <xs:element name="deleteSubAccountResponse" type="tns:deleteSubAccountResponse"/>
+
   <xs:element name="findAllSuPersonsBySocialSecurityNumber" type="tns:findAllSuPersonsBySocialSecurityNumber"/>
 
   <xs:element name="findAllSuPersonsBySocialSecurityNumberResponse" type="tns:findAllSuPersonsBySocialSecurityNumberResponse"/>
@@ -180,6 +184,17 @@
   </xs:complexType>
 
   <xs:complexType name="createSuPersonResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="deleteSubAccount">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="uid" type="xs:string"/>
+      <xs:element minOccurs="0" name="type" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="deleteSubAccountResponse">
     <xs:sequence/>
   </xs:complexType>
 
@@ -402,6 +417,10 @@
     <wsdl:part element="tns:updateSuPerson" name="parameters">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="deleteSubAccount">
+    <wsdl:part element="tns:deleteSubAccount" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="getMailRoutingAddress">
     <wsdl:part element="tns:getMailRoutingAddress" name="parameters">
     </wsdl:part>
@@ -444,6 +463,10 @@
   </wsdl:message>
   <wsdl:message name="addMailLocalAddressesResponse">
     <wsdl:part element="tns:addMailLocalAddressesResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteSubAccountResponse">
+    <wsdl:part element="tns:deleteSubAccountResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="scramblePasswordResponse">
@@ -493,6 +516,12 @@
       <wsdl:input message="tns:createSuPerson" name="createSuPerson">
     </wsdl:input>
       <wsdl:output message="tns:createSuPersonResponse" name="createSuPersonResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteSubAccount">
+      <wsdl:input message="tns:deleteSubAccount" name="deleteSubAccount">
+    </wsdl:input>
+      <wsdl:output message="tns:deleteSubAccountResponse" name="deleteSubAccountResponse">
     </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="scramblePassword">
@@ -615,6 +644,15 @@
         <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="createSuPersonResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="deleteSubAccount">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="deleteSubAccount">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteSubAccountResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
