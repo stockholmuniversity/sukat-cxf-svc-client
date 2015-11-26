@@ -10,7 +10,7 @@ if [ -z ${SERVERURL}  ]
  fi
 
 #space seperated list of wsdl files"
-WSDLFILES="CardOrderService.wsdl CardAdminService.wsdl CardInfoService.wsdl EntitlementService.wsdl ServiceService.wsdl AccountService.wsdl RoleService.wsdl Status.wsdl WebServiceAdmin.wsdl"
+WSDLFILES="CardOrderService.wsdl CardAdminService.wsdl CardInfoService.wsdl EntitlementService.wsdl OneTimeCodeService.wsdl ServiceService.wsdl AccountService.wsdl RoleService.wsdl Status.wsdl WebServiceAdmin.wsdl"
 
 for file in $WSDLFILES; do
   base=`basename $file .wsdl`
