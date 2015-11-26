@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8'?><wsdl:definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://svc.it.su.se/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http" name="OneTimeCodeServiceImplService" targetNamespace="http://svc.it.su.se/">
+  <wsdl:types>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://svc.it.su.se/" elementFormDefault="unqualified" targetNamespace="http://svc.it.su.se/" version="1.0">
+
+  <xs:element name="getConfirmed" type="tns:getConfirmed"/>
+
+  <xs:element name="getConfirmedResponse" type="tns:getConfirmedResponse"/>
+
+  <xs:element name="svcOneTimeCodeVO" type="tns:svcOneTimeCodeVO"/>
+
+  <xs:complexType name="getConfirmed">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nin" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getConfirmedResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:svcOneTimeCodeVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="svcOneTimeCodeVO">
+    <xs:sequence/>
+    <xs:attribute name="uid" type="xs:string"/>
+    <xs:attribute name="password" type="xs:string"/>
+    <xs:attribute name="expire" type="xs:string"/>
+  </xs:complexType>
+
+</xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getConfirmed">
+    <wsdl:part element="tns:getConfirmed" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getConfirmedResponse">
+    <wsdl:part element="tns:getConfirmedResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="OneTimeCodeServiceImpl">
+    <wsdl:operation name="getConfirmed">
+      <wsdl:input message="tns:getConfirmed" name="getConfirmed">
+    </wsdl:input>
+      <wsdl:output message="tns:getConfirmedResponse" name="getConfirmedResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="OneTimeCodeServiceImplServiceSoapBinding" type="tns:OneTimeCodeServiceImpl">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getConfirmed">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getConfirmed">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getConfirmedResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="OneTimeCodeServiceImplService">
+    <wsdl:port binding="tns:OneTimeCodeServiceImplServiceSoapBinding" name="OneTimeCodeServiceImplPort">
+      <soap:address location="https://sukat-prod-svc.it.su.se/1/OneTimeCodeService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
