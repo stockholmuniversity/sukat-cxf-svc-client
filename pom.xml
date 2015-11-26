@@ -131,6 +131,12 @@
                   </extraargs>
                 </wsdlOption>
                 <wsdlOption>
+                  <wsdl>${basedir}/src/main/wsdl/OneTimeCodeService.wsdl</wsdl>
+                  <extraargs>
+                    <extraarg>-xjc-b,${basedir}/src/main/resources/fixserialize.xjb</extraarg>
+                  </extraargs>
+                </wsdlOption>
+                <wsdlOption>
                   <wsdl>${basedir}/src/main/wsdl/ServiceService.wsdl</wsdl>
                   <extraargs>
                     <extraarg>-xjc-b,${basedir}/src/main/resources/fixserialize.xjb</extraarg>
