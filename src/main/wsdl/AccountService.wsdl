@@ -58,9 +58,15 @@
 
   <xs:element name="setConfigManagerResponse" type="tns:setConfigManagerResponse"/>
 
+  <xs:element name="setHomePostalAddress" type="tns:setHomePostalAddress"/>
+
+  <xs:element name="setHomePostalAddressResponse" type="tns:setHomePostalAddressResponse"/>
+
   <xs:element name="setMailRoutingAddress" type="tns:setMailRoutingAddress"/>
 
   <xs:element name="setMailRoutingAddressResponse" type="tns:setMailRoutingAddressResponse"/>
+
+  <xs:element name="svcPostalAddressVO" type="tns:svcPostalAddressVO"/>
 
   <xs:element name="svcSuPersonVO" type="tns:svcSuPersonVO"/>
 
@@ -91,6 +97,26 @@
     <xs:sequence>
       <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:string"/>
     </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="setHomePostalAddress">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="uid" type="xs:string"/>
+      <xs:element minOccurs="0" name="address" type="tns:svcPostalAddressVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="svcPostalAddressVO">
+    <xs:sequence/>
+    <xs:attribute name="street1" type="xs:string"/>
+    <xs:attribute name="street2" type="xs:string"/>
+    <xs:attribute name="code" type="xs:string"/>
+    <xs:attribute name="locality" type="xs:string"/>
+    <xs:attribute name="country" type="xs:string"/>
+  </xs:complexType>
+
+  <xs:complexType name="setHomePostalAddressResponse">
+    <xs:sequence/>
   </xs:complexType>
 
   <xs:complexType name="getMailRoutingAddress">
@@ -153,6 +179,27 @@
     <xs:attribute name="accountIsActive" type="xs:boolean"/>
   </xs:complexType>
 
+  <xs:complexType name="setConfigManager">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="arg0" type="xs:anyType"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="setConfigManagerResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
+  <xs:complexType name="deleteSubAccount">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="uid" type="xs:string"/>
+      <xs:element minOccurs="0" name="type" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="deleteSubAccountResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
   <xs:complexType name="updateSuPerson">
     <xs:sequence>
       <xs:element minOccurs="0" name="uid" type="xs:string"/>
@@ -161,16 +208,6 @@
   </xs:complexType>
 
   <xs:complexType name="updateSuPersonResponse">
-    <xs:sequence/>
-  </xs:complexType>
-
-  <xs:complexType name="setConfigManager">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="arg0" type="xs:anyType"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="setConfigManagerResponse">
     <xs:sequence/>
   </xs:complexType>
 
@@ -184,17 +221,6 @@
   </xs:complexType>
 
   <xs:complexType name="createSuPersonResponse">
-    <xs:sequence/>
-  </xs:complexType>
-
-  <xs:complexType name="deleteSubAccount">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="uid" type="xs:string"/>
-      <xs:element minOccurs="0" name="type" type="xs:string"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="deleteSubAccountResponse">
     <xs:sequence/>
   </xs:complexType>
 
@@ -345,6 +371,10 @@
     <wsdl:part element="tns:getConfigManagerResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="setHomePostalAddressResponse">
+    <wsdl:part element="tns:setHomePostalAddressResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="createSubAccount">
     <wsdl:part element="tns:createSubAccount" name="parameters">
     </wsdl:part>
@@ -357,16 +387,16 @@
     <wsdl:part element="tns:getPasswordResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
-  <wsdl:message name="findAllSuPersonsBySocialSecurityNumber">
-    <wsdl:part element="tns:findAllSuPersonsBySocialSecurityNumber" name="parameters">
+  <wsdl:message name="getConfigManager">
+    <wsdl:part element="tns:getConfigManager" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="terminateSuPersonResponse">
     <wsdl:part element="tns:terminateSuPersonResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
-  <wsdl:message name="getConfigManager">
-    <wsdl:part element="tns:getConfigManager" name="parameters">
+  <wsdl:message name="findAllSuPersonsBySocialSecurityNumber">
+    <wsdl:part element="tns:findAllSuPersonsBySocialSecurityNumber" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="updatePrimaryAffiliation">
@@ -445,6 +475,10 @@
     <wsdl:part element="tns:setConfigManager" name="parameters">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="setHomePostalAddress">
+    <wsdl:part element="tns:setHomePostalAddress" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="terminateSuPerson">
     <wsdl:part element="tns:terminateSuPerson" name="parameters">
     </wsdl:part>
@@ -488,6 +522,12 @@
       <wsdl:output message="tns:addMailLocalAddressesResponse" name="addMailLocalAddressesResponse">
     </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="setHomePostalAddress">
+      <wsdl:input message="tns:setHomePostalAddress" name="setHomePostalAddress">
+    </wsdl:input>
+      <wsdl:output message="tns:setHomePostalAddressResponse" name="setHomePostalAddressResponse">
+    </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getMailRoutingAddress">
       <wsdl:input message="tns:getMailRoutingAddress" name="getMailRoutingAddress">
     </wsdl:input>
@@ -500,28 +540,28 @@
       <wsdl:output message="tns:findAllSuPersonsBySocialSecurityNumberResponse" name="findAllSuPersonsBySocialSecurityNumberResponse">
     </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="updateSuPerson">
-      <wsdl:input message="tns:updateSuPerson" name="updateSuPerson">
-    </wsdl:input>
-      <wsdl:output message="tns:updateSuPersonResponse" name="updateSuPersonResponse">
-    </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="setConfigManager">
       <wsdl:input message="tns:setConfigManager" name="setConfigManager">
     </wsdl:input>
       <wsdl:output message="tns:setConfigManagerResponse" name="setConfigManagerResponse">
     </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="createSuPerson">
-      <wsdl:input message="tns:createSuPerson" name="createSuPerson">
-    </wsdl:input>
-      <wsdl:output message="tns:createSuPersonResponse" name="createSuPersonResponse">
-    </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="deleteSubAccount">
       <wsdl:input message="tns:deleteSubAccount" name="deleteSubAccount">
     </wsdl:input>
       <wsdl:output message="tns:deleteSubAccountResponse" name="deleteSubAccountResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="updateSuPerson">
+      <wsdl:input message="tns:updateSuPerson" name="updateSuPerson">
+    </wsdl:input>
+      <wsdl:output message="tns:updateSuPersonResponse" name="updateSuPersonResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createSuPerson">
+      <wsdl:input message="tns:createSuPerson" name="createSuPerson">
+    </wsdl:input>
+      <wsdl:output message="tns:createSuPersonResponse" name="createSuPersonResponse">
     </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="scramblePassword">
@@ -611,6 +651,15 @@
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="setHomePostalAddress">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="setHomePostalAddress">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="setHomePostalAddressResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="findAllSuPersonsBySocialSecurityNumber">
       <soap:operation soapAction="" style="document"/>
       <wsdl:input name="findAllSuPersonsBySocialSecurityNumber">
@@ -629,6 +678,15 @@
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="deleteSubAccount">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="deleteSubAccount">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteSubAccountResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="updateSuPerson">
       <soap:operation soapAction="" style="document"/>
       <wsdl:input name="updateSuPerson">
@@ -644,15 +702,6 @@
         <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="createSuPersonResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
-    <wsdl:operation name="deleteSubAccount">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="deleteSubAccount">
-        <soap:body use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="deleteSubAccountResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
