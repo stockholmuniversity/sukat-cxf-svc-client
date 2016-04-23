@@ -12,6 +12,29 @@
 
   <xs:element name="suCard" type="tns:suCard"/>
 
+  <xs:complexType name="getCardByUUID">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="suCardUUID" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getCardByUUIDResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:suCard"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="suCard">
+    <xs:sequence/>
+    <xs:attribute name="cn" type="xs:string"/>
+    <xs:attribute name="owner" type="xs:string"/>
+    <xs:attribute name="suCardUUID" type="xs:string"/>
+    <xs:attribute name="suCardTypeURN" type="xs:string"/>
+    <xs:attribute name="suCardSerial" type="xs:string"/>
+    <xs:attribute name="suCardState" type="xs:string"/>
+    <xs:attribute name="suCardPIN" type="xs:string"/>
+  </xs:complexType>
+
   <xs:complexType name="getAllCards">
     <xs:sequence>
       <xs:element minOccurs="0" name="uid" type="xs:string"/>
@@ -22,28 +45,6 @@
   <xs:complexType name="getAllCardsResponse">
     <xs:sequence>
       <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:suCard"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="suCard">
-    <xs:sequence/>
-    <xs:attribute name="cn" type="xs:string"/>
-    <xs:attribute name="suCardUUID" type="xs:string"/>
-    <xs:attribute name="suCardTypeURN" type="xs:string"/>
-    <xs:attribute name="suCardSerial" type="xs:string"/>
-    <xs:attribute name="suCardState" type="xs:string"/>
-    <xs:attribute name="suCardPIN" type="xs:string"/>
-  </xs:complexType>
-
-  <xs:complexType name="getCardByUUID">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="suCardUUID" type="xs:string"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="getCardByUUIDResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="tns:suCard"/>
     </xs:sequence>
   </xs:complexType>
 
@@ -66,30 +67,21 @@
     </wsdl:part>
   </wsdl:message>
   <wsdl:portType name="CardInfoServiceImpl">
-    <wsdl:operation name="getAllCards">
-      <wsdl:input message="tns:getAllCards" name="getAllCards">
-    </wsdl:input>
-      <wsdl:output message="tns:getAllCardsResponse" name="getAllCardsResponse">
-    </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="getCardByUUID">
       <wsdl:input message="tns:getCardByUUID" name="getCardByUUID">
     </wsdl:input>
       <wsdl:output message="tns:getCardByUUIDResponse" name="getCardByUUIDResponse">
     </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getAllCards">
+      <wsdl:input message="tns:getAllCards" name="getAllCards">
+    </wsdl:input>
+      <wsdl:output message="tns:getAllCardsResponse" name="getAllCardsResponse">
+    </wsdl:output>
+    </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="CardInfoServiceImplServiceSoapBinding" type="tns:CardInfoServiceImpl">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
-    <wsdl:operation name="getAllCards">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="getAllCards">
-        <soap:body use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="getAllCardsResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="getCardByUUID">
       <soap:operation soapAction="" style="document"/>
       <wsdl:input name="getCardByUUID">
@@ -99,10 +91,19 @@
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="getAllCards">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getAllCards">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getAllCardsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="CardInfoServiceImplService">
     <wsdl:port binding="tns:CardInfoServiceImplServiceSoapBinding" name="CardInfoServiceImplPort">
-      <soap:address location="http://127.0.0.1:8080/CardInfoService"/>
+      <soap:address location="https://sukat-prod-svc.it.su.se/1/CardInfoService"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
