@@ -6,6 +6,10 @@
 
   <xs:element name="findAllCardOrdersForUidResponse" type="tns:findAllCardOrdersForUidResponse"/>
 
+  <xs:element name="findCardOrderByUuid" type="tns:findCardOrderByUuid"/>
+
+  <xs:element name="findCardOrderByUuidResponse" type="tns:findCardOrderByUuidResponse"/>
+
   <xs:element name="getSuCardOrderQuery" type="tns:getSuCardOrderQuery"/>
 
   <xs:element name="getSuCardOrderQueryResponse" type="tns:getSuCardOrderQueryResponse"/>
@@ -81,6 +85,18 @@
     </xs:sequence>
   </xs:complexType>
 
+  <xs:complexType name="findCardOrderByUuid">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="uuid" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="findCardOrderByUuidResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:svcCardOrderVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
 </xs:schema>
   </wsdl:types>
   <wsdl:message name="orderCardResponse">
@@ -103,12 +119,20 @@
     <wsdl:part element="tns:setSuCardOrderQuery" name="parameters">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="findCardOrderByUuidResponse">
+    <wsdl:part element="tns:findCardOrderByUuidResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="findAllCardOrdersForUid">
     <wsdl:part element="tns:findAllCardOrdersForUid" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="getSuCardOrderQueryResponse">
     <wsdl:part element="tns:getSuCardOrderQueryResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findCardOrderByUuid">
+    <wsdl:part element="tns:findCardOrderByUuid" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="findAllCardOrdersForUidResponse">
@@ -138,6 +162,12 @@
       <wsdl:input message="tns:getSuCardOrderQuery" name="getSuCardOrderQuery">
     </wsdl:input>
       <wsdl:output message="tns:getSuCardOrderQueryResponse" name="getSuCardOrderQueryResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="findCardOrderByUuid">
+      <wsdl:input message="tns:findCardOrderByUuid" name="findCardOrderByUuid">
+    </wsdl:input>
+      <wsdl:output message="tns:findCardOrderByUuidResponse" name="findCardOrderByUuidResponse">
     </wsdl:output>
     </wsdl:operation>
   </wsdl:portType>
@@ -179,10 +209,19 @@
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="findCardOrderByUuid">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findCardOrderByUuid">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findCardOrderByUuidResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:service name="CardOrderServiceImplService">
     <wsdl:port binding="tns:CardOrderServiceImplServiceSoapBinding" name="CardOrderServiceImplPort">
-      <soap:address location="http://127.0.0.1:8080/CardOrderService"/>
+      <soap:address location="https://sukat-prod-svc.it.su.se/1/CardOrderService"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
