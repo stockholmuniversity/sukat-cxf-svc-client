@@ -6,7 +6,30 @@
 
   <xs:element name="getConfirmedResponse" type="tns:getConfirmedResponse"/>
 
+  <xs:element name="getUnconfirmed" type="tns:getUnconfirmed"/>
+
+  <xs:element name="getUnconfirmedResponse" type="tns:getUnconfirmedResponse"/>
+
   <xs:element name="svcOneTimeCodeVO" type="tns:svcOneTimeCodeVO"/>
+
+  <xs:complexType name="getUnconfirmed">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="days" type="xs:int"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getUnconfirmedResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:svcOneTimeCodeVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="svcOneTimeCodeVO">
+    <xs:sequence/>
+    <xs:attribute name="uid" type="xs:string"/>
+    <xs:attribute name="password" type="xs:string"/>
+    <xs:attribute name="expire" type="xs:string"/>
+  </xs:complexType>
 
   <xs:complexType name="getConfirmed">
     <xs:sequence>
@@ -20,15 +43,16 @@
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="svcOneTimeCodeVO">
-    <xs:sequence/>
-    <xs:attribute name="uid" type="xs:string"/>
-    <xs:attribute name="password" type="xs:string"/>
-    <xs:attribute name="expire" type="xs:string"/>
-  </xs:complexType>
-
 </xs:schema>
   </wsdl:types>
+  <wsdl:message name="getUnconfirmed">
+    <wsdl:part element="tns:getUnconfirmed" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getUnconfirmedResponse">
+    <wsdl:part element="tns:getUnconfirmedResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="getConfirmed">
     <wsdl:part element="tns:getConfirmed" name="parameters">
     </wsdl:part>
@@ -38,6 +62,12 @@
     </wsdl:part>
   </wsdl:message>
   <wsdl:portType name="OneTimeCodeServiceImpl">
+    <wsdl:operation name="getUnconfirmed">
+      <wsdl:input message="tns:getUnconfirmed" name="getUnconfirmed">
+    </wsdl:input>
+      <wsdl:output message="tns:getUnconfirmedResponse" name="getUnconfirmedResponse">
+    </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="getConfirmed">
       <wsdl:input message="tns:getConfirmed" name="getConfirmed">
     </wsdl:input>
@@ -53,6 +83,15 @@
         <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="getConfirmedResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getUnconfirmed">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getUnconfirmed">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getUnconfirmedResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
