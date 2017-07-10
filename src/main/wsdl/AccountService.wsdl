@@ -66,6 +66,10 @@
 
   <xs:element name="setMailRoutingAddressResponse" type="tns:setMailRoutingAddressResponse"/>
 
+  <xs:element name="setTitle" type="tns:setTitle"/>
+
+  <xs:element name="setTitleResponse" type="tns:setTitleResponse"/>
+
   <xs:element name="svcPostalAddressVO" type="tns:svcPostalAddressVO"/>
 
   <xs:element name="svcSuPersonVO" type="tns:svcSuPersonVO"/>
@@ -147,7 +151,6 @@
     <xs:sequence>
       <xs:element maxOccurs="unbounded" minOccurs="0" name="eduPersonAffiliation" type="xs:string"/>
       <xs:element maxOccurs="unbounded" minOccurs="0" name="eduPersonEntitlement" type="xs:string"/>
-      <xs:element maxOccurs="unbounded" minOccurs="0" name="title" type="xs:string"/>
       <xs:element maxOccurs="unbounded" minOccurs="0" name="roomNumber" type="xs:string"/>
       <xs:element maxOccurs="unbounded" minOccurs="0" name="telephoneNumber" type="xs:string"/>
       <xs:element maxOccurs="unbounded" minOccurs="0" name="sukatPULAttributes" type="xs:string"/>
@@ -161,6 +164,8 @@
     <xs:attribute name="givenName" type="xs:string"/>
     <xs:attribute name="sn" type="xs:string"/>
     <xs:attribute name="displayName" type="xs:string"/>
+    <xs:attribute name="title" type="xs:string"/>
+    <xs:attribute name="titleEn" type="xs:string"/>
     <xs:attribute name="mobile" type="xs:string"/>
     <xs:attribute name="labeledURI" type="xs:string"/>
     <xs:attribute name="sukatLOAFromDate" type="xs:string"/>
@@ -361,6 +366,18 @@
     <xs:sequence/>
   </xs:complexType>
 
+  <xs:complexType name="setTitle">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="uid" type="xs:string"/>
+      <xs:element minOccurs="0" name="sv" type="xs:string"/>
+      <xs:element minOccurs="0" name="en" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="setTitleResponse">
+    <xs:sequence/>
+  </xs:complexType>
+
 </xs:schema>
   </wsdl:types>
   <wsdl:message name="activateSuPerson">
@@ -385,6 +402,10 @@
   </wsdl:message>
   <wsdl:message name="getPasswordResponse">
     <wsdl:part element="tns:getPasswordResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="setTitle">
+    <wsdl:part element="tns:setTitle" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="getConfigManager">
@@ -501,6 +522,10 @@
   </wsdl:message>
   <wsdl:message name="deleteSubAccountResponse">
     <wsdl:part element="tns:deleteSubAccountResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="setTitleResponse">
+    <wsdl:part element="tns:setTitleResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="scramblePasswordResponse">
@@ -628,6 +653,12 @@
       <wsdl:input message="tns:updatePrimaryAffiliation" name="updatePrimaryAffiliation">
     </wsdl:input>
       <wsdl:output message="tns:updatePrimaryAffiliationResponse" name="updatePrimaryAffiliationResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setTitle">
+      <wsdl:input message="tns:setTitle" name="setTitle">
+    </wsdl:input>
+      <wsdl:output message="tns:setTitleResponse" name="setTitleResponse">
     </wsdl:output>
     </wsdl:operation>
   </wsdl:portType>
@@ -801,6 +832,15 @@
         <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="updatePrimaryAffiliationResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="setTitle">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="setTitle">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="setTitleResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
