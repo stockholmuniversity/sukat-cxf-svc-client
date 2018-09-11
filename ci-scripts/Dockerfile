@@ -1,4 +1,4 @@
-FROM jenkins-agent/stretch
+FROM jenkins-agent/trusty
 
 RUN apt-get update && \
     apt-get install -y \
