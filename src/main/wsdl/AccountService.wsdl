@@ -16,6 +16,10 @@
 
   <xs:element name="createSubAccount" type="tns:createSubAccount"/>
 
+  <xs:element name="createSubAccount2" type="tns:createSubAccount2"/>
+
+  <xs:element name="createSubAccount2Response" type="tns:createSubAccount2Response"/>
+
   <xs:element name="createSubAccountResponse" type="tns:createSubAccountResponse"/>
 
   <xs:element name="deleteSubAccount" type="tns:deleteSubAccount"/>
@@ -194,6 +198,25 @@
     <xs:sequence/>
   </xs:complexType>
 
+  <xs:complexType name="createSubAccount2">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="uid" type="xs:string"/>
+      <xs:element minOccurs="0" name="type" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="createSubAccount2Response">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:svcUidPwd"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="svcUidPwd">
+    <xs:sequence/>
+    <xs:attribute name="uid" type="xs:string"/>
+    <xs:attribute name="password" type="xs:string"/>
+  </xs:complexType>
+
   <xs:complexType name="deleteSubAccount">
     <xs:sequence>
       <xs:element minOccurs="0" name="uid" type="xs:string"/>
@@ -338,12 +361,6 @@
     </xs:sequence>
   </xs:complexType>
 
-  <xs:complexType name="svcUidPwd">
-    <xs:sequence/>
-    <xs:attribute name="uid" type="xs:string"/>
-    <xs:attribute name="password" type="xs:string"/>
-  </xs:complexType>
-
   <xs:complexType name="createSubAccount">
     <xs:sequence>
       <xs:element minOccurs="0" name="uid" type="xs:string"/>
@@ -476,16 +493,20 @@
     <wsdl:part element="tns:getMailRoutingAddress" name="parameters">
     </wsdl:part>
   </wsdl:message>
-  <wsdl:message name="setConfigManagerResponse">
-    <wsdl:part element="tns:setConfigManagerResponse" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
   <wsdl:message name="findSuPersonByUidResponse">
     <wsdl:part element="tns:findSuPersonByUidResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="setConfigManagerResponse">
+    <wsdl:part element="tns:setConfigManagerResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="setMailRoutingAddress">
     <wsdl:part element="tns:setMailRoutingAddress" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createSubAccount2">
+    <wsdl:part element="tns:createSubAccount2" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="createSuPersonResponse">
@@ -496,12 +517,12 @@
     <wsdl:part element="tns:setConfigManager" name="parameters">
     </wsdl:part>
   </wsdl:message>
-  <wsdl:message name="setHomePostalAddress">
-    <wsdl:part element="tns:setHomePostalAddress" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
   <wsdl:message name="terminateSuPerson">
     <wsdl:part element="tns:terminateSuPerson" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="setHomePostalAddress">
+    <wsdl:part element="tns:setHomePostalAddress" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="getSubAccount">
@@ -514,6 +535,10 @@
   </wsdl:message>
   <wsdl:message name="findSuPersonByUid">
     <wsdl:part element="tns:findSuPersonByUid" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createSubAccount2Response">
+    <wsdl:part element="tns:createSubAccount2Response" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="addMailLocalAddressesResponse">
@@ -569,6 +594,12 @@
       <wsdl:input message="tns:setConfigManager" name="setConfigManager">
     </wsdl:input>
       <wsdl:output message="tns:setConfigManagerResponse" name="setConfigManagerResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createSubAccount2">
+      <wsdl:input message="tns:createSubAccount2" name="createSubAccount2">
+    </wsdl:input>
+      <wsdl:output message="tns:createSubAccount2Response" name="createSubAccount2Response">
     </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="deleteSubAccount">
@@ -697,6 +728,15 @@
         <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="findAllSuPersonsBySocialSecurityNumberResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createSubAccount2">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createSubAccount2">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createSubAccount2Response">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
