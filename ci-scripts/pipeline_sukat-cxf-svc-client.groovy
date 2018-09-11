@@ -31,7 +31,7 @@ node('agent')
 
             stage('Deploy Nexus')
             {
-                sh 'mvn deploy --global-settings ' + settingspath
+                sh './mvnw deploy --global-settings ' + settingspath
             }
         }
     }
