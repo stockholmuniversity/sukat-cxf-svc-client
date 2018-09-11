@@ -186,9 +186,15 @@
   </repositories>
 
   <distributionManagement>
+    <snapshotRepository>
+       <id>it.su.se-jenkins-snapshot</id>
+      <name>Jenkins snapshot repo</name>
+       <url>https://maven.it.su.se/repository/it.su.se-jenkins-snapshot</url>
+    </snapshotRepository>
     <repository>
-      <id>ssh-repository</id>
-      <url>scpexe://svn.it.su.se/afs/su.se/services/maven/it.su.se/maven2</url>
+      <id>it.su.se-jenkins-release</id>
+      <name>Jenkins release repo</name>
+      <url>https://maven.it.su.se/repository/it.su.se-jenkins-release</url>
     </repository>
   </distributionManagement>
 
