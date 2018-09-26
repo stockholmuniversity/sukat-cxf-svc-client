@@ -10,6 +10,10 @@
 
   <xs:element name="addMailLocalAddressesResponse" type="tns:addMailLocalAddressesResponse"/>
 
+  <xs:element name="createPerson" type="tns:createPerson"/>
+
+  <xs:element name="createPersonResponse" type="tns:createPersonResponse"/>
+
   <xs:element name="createSuPerson" type="tns:createSuPerson"/>
 
   <xs:element name="createSuPersonResponse" type="tns:createSuPersonResponse"/>
@@ -41,10 +45,6 @@
   <xs:element name="getMailRoutingAddress" type="tns:getMailRoutingAddress"/>
 
   <xs:element name="getMailRoutingAddressResponse" type="tns:getMailRoutingAddressResponse"/>
-
-  <xs:element name="getPassword" type="tns:getPassword"/>
-
-  <xs:element name="getPasswordResponse" type="tns:getPasswordResponse"/>
 
   <xs:element name="getSubAccount" type="tns:getSubAccount"/>
 
@@ -262,18 +262,6 @@
     <xs:sequence/>
   </xs:complexType>
 
-  <xs:complexType name="getPassword">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="uid" type="xs:string"/>
-    </xs:sequence>
-  </xs:complexType>
-
-  <xs:complexType name="getPasswordResponse">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="return" type="xs:string"/>
-    </xs:sequence>
-  </xs:complexType>
-
   <xs:complexType name="getSubAccount">
     <xs:sequence>
       <xs:element minOccurs="0" name="uid" type="xs:string"/>
@@ -369,7 +357,9 @@
   </xs:complexType>
 
   <xs:complexType name="createSubAccountResponse">
-    <xs:sequence/>
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="tns:svcUidPwd"/>
+    </xs:sequence>
   </xs:complexType>
 
   <xs:complexType name="updatePrimaryAffiliation">
@@ -395,6 +385,20 @@
     <xs:sequence/>
   </xs:complexType>
 
+  <xs:complexType name="createPerson">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="nin" type="xs:string"/>
+      <xs:element minOccurs="0" name="givenName" type="xs:string"/>
+      <xs:element minOccurs="0" name="sn" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="createPersonResponse">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
 </xs:schema>
   </wsdl:types>
   <wsdl:message name="activateSuPerson">
@@ -415,10 +419,6 @@
   </wsdl:message>
   <wsdl:message name="setMailRoutingAddressResponse">
     <wsdl:part element="tns:setMailRoutingAddressResponse" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="getPasswordResponse">
-    <wsdl:part element="tns:getPasswordResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="setTitle">
@@ -447,10 +447,6 @@
   </wsdl:message>
   <wsdl:message name="createSuPerson">
     <wsdl:part element="tns:createSuPerson" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
-  <wsdl:message name="getPassword">
-    <wsdl:part element="tns:getPassword" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="activateSuPersonResponse">
@@ -493,12 +489,20 @@
     <wsdl:part element="tns:getMailRoutingAddress" name="parameters">
     </wsdl:part>
   </wsdl:message>
-  <wsdl:message name="findSuPersonByUidResponse">
-    <wsdl:part element="tns:findSuPersonByUidResponse" name="parameters">
+  <wsdl:message name="createPerson">
+    <wsdl:part element="tns:createPerson" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="createPersonResponse">
+    <wsdl:part element="tns:createPersonResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="setConfigManagerResponse">
     <wsdl:part element="tns:setConfigManagerResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findSuPersonByUidResponse">
+    <wsdl:part element="tns:findSuPersonByUidResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="setMailRoutingAddress">
@@ -517,12 +521,12 @@
     <wsdl:part element="tns:setConfigManager" name="parameters">
     </wsdl:part>
   </wsdl:message>
-  <wsdl:message name="terminateSuPerson">
-    <wsdl:part element="tns:terminateSuPerson" name="parameters">
-    </wsdl:part>
-  </wsdl:message>
   <wsdl:message name="setHomePostalAddress">
     <wsdl:part element="tns:setHomePostalAddress" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="terminateSuPerson">
+    <wsdl:part element="tns:terminateSuPerson" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="getSubAccount">
@@ -626,12 +630,6 @@
       <wsdl:output message="tns:scramblePasswordResponse" name="scramblePasswordResponse">
     </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getPassword">
-      <wsdl:input message="tns:getPassword" name="getPassword">
-    </wsdl:input>
-      <wsdl:output message="tns:getPasswordResponse" name="getPasswordResponse">
-    </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="getSubAccount">
       <wsdl:input message="tns:getSubAccount" name="getSubAccount">
     </wsdl:input>
@@ -690,6 +688,12 @@
       <wsdl:input message="tns:setTitle" name="setTitle">
     </wsdl:input>
       <wsdl:output message="tns:setTitleResponse" name="setTitleResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createPerson">
+      <wsdl:input message="tns:createPerson" name="createPerson">
+    </wsdl:input>
+      <wsdl:output message="tns:createPersonResponse" name="createPersonResponse">
     </wsdl:output>
     </wsdl:operation>
   </wsdl:portType>
@@ -785,15 +789,6 @@
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
-    <wsdl:operation name="getPassword">
-      <soap:operation soapAction="" style="document"/>
-      <wsdl:input name="getPassword">
-        <soap:body use="literal"/>
-      </wsdl:input>
-      <wsdl:output name="getPasswordResponse">
-        <soap:body use="literal"/>
-      </wsdl:output>
-    </wsdl:operation>
     <wsdl:operation name="getSubAccount">
       <soap:operation soapAction="" style="document"/>
       <wsdl:input name="getSubAccount">
@@ -872,6 +867,15 @@
         <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="updatePrimaryAffiliationResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="createPerson">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="createPerson">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="createPersonResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
