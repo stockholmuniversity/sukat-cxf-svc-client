@@ -10,6 +10,10 @@
 
   <xs:element name="findCardOrderByUuidResponse" type="tns:findCardOrderByUuidResponse"/>
 
+  <xs:element name="getCardOrderHistory" type="tns:getCardOrderHistory"/>
+
+  <xs:element name="getCardOrderHistoryResponse" type="tns:getCardOrderHistoryResponse"/>
+
   <xs:element name="getSuCardOrderQuery" type="tns:getSuCardOrderQuery"/>
 
   <xs:element name="getSuCardOrderQueryResponse" type="tns:getSuCardOrderQueryResponse"/>
@@ -21,6 +25,8 @@
   <xs:element name="setSuCardOrderQuery" type="tns:setSuCardOrderQuery"/>
 
   <xs:element name="setSuCardOrderQueryResponse" type="tns:setSuCardOrderQueryResponse"/>
+
+  <xs:element name="svcCardOrderHistoryVO" type="tns:svcCardOrderHistoryVO"/>
 
   <xs:element name="svcCardOrderVO" type="tns:svcCardOrderVO"/>
 
@@ -85,6 +91,25 @@
     </xs:sequence>
   </xs:complexType>
 
+  <xs:complexType name="getCardOrderHistory">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="uuid" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getCardOrderHistoryResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="tns:svcCardOrderHistoryVO"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="svcCardOrderHistoryVO">
+    <xs:sequence/>
+    <xs:attribute name="timestamp" type="xs:dateTime"/>
+    <xs:attribute name="status" type="xs:string"/>
+    <xs:attribute name="comment" type="xs:string"/>
+  </xs:complexType>
+
   <xs:complexType name="findCardOrderByUuid">
     <xs:sequence>
       <xs:element minOccurs="0" name="uuid" type="xs:string"/>
@@ -101,6 +126,10 @@
   </wsdl:types>
   <wsdl:message name="orderCardResponse">
     <wsdl:part element="tns:orderCardResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getCardOrderHistoryResponse">
+    <wsdl:part element="tns:getCardOrderHistoryResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="orderCard">
@@ -135,6 +164,10 @@
     <wsdl:part element="tns:findCardOrderByUuid" name="parameters">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="getCardOrderHistory">
+    <wsdl:part element="tns:getCardOrderHistory" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="findAllCardOrdersForUidResponse">
     <wsdl:part element="tns:findAllCardOrdersForUidResponse" name="parameters">
     </wsdl:part>
@@ -162,6 +195,12 @@
       <wsdl:input message="tns:getSuCardOrderQuery" name="getSuCardOrderQuery">
     </wsdl:input>
       <wsdl:output message="tns:getSuCardOrderQueryResponse" name="getSuCardOrderQueryResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCardOrderHistory">
+      <wsdl:input message="tns:getCardOrderHistory" name="getCardOrderHistory">
+    </wsdl:input>
+      <wsdl:output message="tns:getCardOrderHistoryResponse" name="getCardOrderHistoryResponse">
     </wsdl:output>
     </wsdl:operation>
     <wsdl:operation name="findCardOrderByUuid">
@@ -197,6 +236,15 @@
         <soap:body use="literal"/>
       </wsdl:input>
       <wsdl:output name="setSuCardOrderQueryResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getCardOrderHistory">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getCardOrderHistory">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getCardOrderHistoryResponse">
         <soap:body use="literal"/>
       </wsdl:output>
     </wsdl:operation>
