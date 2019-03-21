@@ -1,16 +1,17 @@
+<?xml version="1.0"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>se.su.it.cxf</groupId>
   <artifactId>sukat-cxf-svc-client</artifactId>
   <packaging>jar</packaging>
-  <version>1.3.22-SNAPSHOT</version>
+  <version>1.3.22</version>
   <name>sukat-cxf-svc-client</name>
   <url>http://devel.it.su.se</url>
   <description>WebService Client for SU cxf services.</description>
   <developers>
     <developer>
       <id>jqvar</id>
-      <name>Jan Qvarnström</name>
+      <name>Jan Qvarnstr&#xF6;m</name>
       <email>jqvar@it.su.se</email>
       <organization>Stockholm university</organization>
       <timezone>CET</timezone>
@@ -23,14 +24,12 @@
       <timezone>CET</timezone>
     </developer>
   </developers>
-
   <scm>
     <connection>scm:git:git@github.com:stockholmuniversity/sukat-cxf-svc-client.git</connection>
     <url>scm:git:git@github.com:stockholmuniversity/sukat-cxf-svc-client.git</url>
     <developerConnection>scm:git:git@github.com:stockholmuniversity/sukat-cxf-svc-client.git</developerConnection>
     <tag>HEAD</tag>
   </scm>
-
   <organization>
     <name>Stockholm university</name>
     <url>http://www.su.se</url>
@@ -72,7 +71,6 @@
         <version>2.4</version>
       </extension>
     </extensions>
-
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
@@ -83,7 +81,6 @@
           <target>1.6</target>
         </configuration>
       </plugin>
-
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-release-plugin</artifactId>
@@ -92,7 +89,6 @@
           <tagNameFormat>@{project.version}</tagNameFormat>
         </configuration>
       </plugin>
-
       <plugin>
         <groupId>org.apache.cxf</groupId>
         <artifactId>cxf-codegen-plugin</artifactId>
@@ -164,7 +160,6 @@
       </plugin>
     </plugins>
   </build>
-
   <repositories>
     <repository>
       <id>SU-Maven</id>
@@ -172,12 +167,11 @@
       <url>https://maven.it.su.se/repository/public/</url>
     </repository>
   </repositories>
-
   <distributionManagement>
     <snapshotRepository>
-       <id>it.su.se-jenkins-snapshot</id>
+      <id>it.su.se-jenkins-snapshot</id>
       <name>Jenkins snapshot repo</name>
-       <url>https://maven.it.su.se/repository/it.su.se-jenkins-snapshot</url>
+      <url>https://maven.it.su.se/repository/it.su.se-jenkins-snapshot</url>
     </snapshotRepository>
     <repository>
       <id>it.su.se-jenkins-release</id>
@@ -185,7 +179,6 @@
       <url>https://maven.it.su.se/repository/it.su.se-jenkins-release</url>
     </repository>
   </distributionManagement>
-
   <prerequisites>
     <maven>3.0.0</maven>
   </prerequisites>
