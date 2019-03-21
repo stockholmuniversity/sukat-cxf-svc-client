@@ -6,9 +6,25 @@
 
   <xs:element name="addEntitlementResponse" type="tns:addEntitlementResponse"/>
 
+  <xs:element name="getEntitlements" type="tns:getEntitlements"/>
+
+  <xs:element name="getEntitlementsResponse" type="tns:getEntitlementsResponse"/>
+
   <xs:element name="removeEntitlement" type="tns:removeEntitlement"/>
 
   <xs:element name="removeEntitlementResponse" type="tns:removeEntitlementResponse"/>
+
+  <xs:complexType name="getEntitlements">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="uid" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
+
+  <xs:complexType name="getEntitlementsResponse">
+    <xs:sequence>
+      <xs:element maxOccurs="unbounded" minOccurs="0" name="return" type="xs:string"/>
+    </xs:sequence>
+  </xs:complexType>
 
   <xs:complexType name="removeEntitlement">
     <xs:sequence>
@@ -38,8 +54,16 @@
     <wsdl:part element="tns:addEntitlementResponse" name="parameters">
     </wsdl:part>
   </wsdl:message>
+  <wsdl:message name="getEntitlementsResponse">
+    <wsdl:part element="tns:getEntitlementsResponse" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
   <wsdl:message name="removeEntitlement">
     <wsdl:part element="tns:removeEntitlement" name="parameters">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getEntitlements">
+    <wsdl:part element="tns:getEntitlements" name="parameters">
     </wsdl:part>
   </wsdl:message>
   <wsdl:message name="addEntitlement">
@@ -51,6 +75,12 @@
     </wsdl:part>
   </wsdl:message>
   <wsdl:portType name="EntitlementServiceImpl">
+    <wsdl:operation name="getEntitlements">
+      <wsdl:input message="tns:getEntitlements" name="getEntitlements">
+    </wsdl:input>
+      <wsdl:output message="tns:getEntitlementsResponse" name="getEntitlementsResponse">
+    </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="removeEntitlement">
       <wsdl:input message="tns:removeEntitlement" name="removeEntitlement">
     </wsdl:input>
@@ -66,6 +96,15 @@
   </wsdl:portType>
   <wsdl:binding name="EntitlementServiceImplServiceSoapBinding" type="tns:EntitlementServiceImpl">
     <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getEntitlements">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getEntitlements">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getEntitlementsResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
     <wsdl:operation name="removeEntitlement">
       <soap:operation soapAction="" style="document"/>
       <wsdl:input name="removeEntitlement">
@@ -87,7 +126,7 @@
   </wsdl:binding>
   <wsdl:service name="EntitlementServiceImplService">
     <wsdl:port binding="tns:EntitlementServiceImplServiceSoapBinding" name="EntitlementServiceImplPort">
-      <soap:address location="http://melkor.it.su.se:9090/EntitlementService"/>
+      <soap:address location="https://sukat-prod-svc.it.su.se/1/EntitlementService"/>
     </wsdl:port>
   </wsdl:service>
 </wsdl:definitions>
