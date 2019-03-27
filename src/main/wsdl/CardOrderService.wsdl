@@ -106,7 +106,7 @@
   <xs:complexType name="svcCardOrderHistoryVO">
     <xs:sequence/>
     <xs:attribute name="timestamp" type="xs:dateTime"/>
-    <xs:attribute name="status" type="xs:string"/>
+    <xs:attribute name="value" type="xs:string"/>
     <xs:attribute name="comment" type="xs:string"/>
   </xs:complexType>
 
